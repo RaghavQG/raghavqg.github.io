@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Raghvendra Singh | Ariel University</title>
     <style>
         body {
@@ -45,6 +44,13 @@
         a {
             color: #00539C;
         }
+        .profile-img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -52,35 +58,50 @@
 <header>
     <h1>Raghvendra Singh</h1>
     <h3>Ariel University, Israel</h3>
+    <img src=\"your-photo.jpg\" alt=\"Raghvendra Singh\" class=\"profile-img\">
 </header>
 
 <nav>
-    <a href="#about">About</a>
-    <a href="#research">Research Interests</a>
-    <a href="#publications">Publications</a>
-    <a href="#contact">Contact</a>
+    <a href=\"#about\">About</a>
+    <a href=\"#research\">Research Interests</a>
+    <a href=\"#academics\">Academic Details</a>
+    <a href=\"#publications\">Publications</a>
+    <a href=\"#contact\">Contact</a>
 </nav>
 
-<section id="about">
+<section id=\"about\">
     <h2>About Me</h2>
     <p><em>Information will be updated soon.</em></p>
 </section>
 
-<section id="research">
+<section id=\"research\">
     <h2>Research Interests</h2>
     <ul>
         <li>Semiclassical and Quantum aspects of Gravity</li>
     </ul>
 </section>
 
-<section id="publications">
-    <h2>Publications</h2>
-    <p>See my publications on <a href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank">Google Scholar</a>.</p>
+<section id=\"academics\">
+    <h2>Academic Details</h2>
+    <ul>
+        <li><strong>PhD:</strong> IMSc Chennai<br>
+            <strong>Supervisor:</strong> Sujay K Ashok<br>
+            <strong>Co-supervisor:</strong> Dawood Kothawala (IIT Madras)
+        </li>
+        <li><strong>MSc:</strong> IMSc Chennai<br>
+            <strong>Thesis Advisor:</strong> Alok Laddha (CMI)
+        </li>
+    </ul>
 </section>
 
-<section id="contact">
+<section id=\"publications\">
+    <h2>Publications</h2>
+    <p>See my publications on <a href=\"https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en\" target=\"_blank\">Google Scholar</a>.</p>
+</section>
+
+<section id=\"contact\">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:raghvendra.imsc@gmail.com">raghvendra.imsc@gmail.com</a> | <a href="mailto:raghvendra@ariel.ac.il">raghvendra@ariel.ac.il</a></p>
+    <p>Email: <a href=\"mailto:raghvendra.imsc@gmail.com\">raghvendra.imsc@gmail.com</a> | <a href=\"mailto:raghvendra@ariel.ac.il\">raghvendra@ariel.ac.il</a></p>
 </section>
 
 <footer>
