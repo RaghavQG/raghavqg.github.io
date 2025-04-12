@@ -15,8 +15,31 @@
         header {
             background-color: #00539C;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .profile-img {
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .header-text {
+            max-width: 400px;
+            text-align: left;
+        }
+        .header-text h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        .header-text h3 {
+            margin: 5px 0 0 0;
+            font-weight: normal;
         }
         nav {
             margin: 20px auto;
@@ -45,22 +68,16 @@
         a {
             color: #00539C;
         }
-        .profile-img {
-            border-radius: 50%;
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Raghvendra Singh</h1>
-    <h3>Ariel University, Israel</h3>
     <img src="IMG20191026014115.jpg" alt="Raghvendra Singh" class="profile-img">
+    <div class="header-text">
+        <h1>Raghvendra Singh</h1>
+        <h3>Ariel University, Israel</h3>
+    </div>
 </header>
 
 <nav>
