@@ -89,9 +89,17 @@
 </nav>
 
 <section id="about">
-    <h2>About Me</h2>
-    <p><em>I am a Postdoctoral Fellow at Ariel University, Israel, working with Prof. Sergey Bondarenko. My research is broadly focused on questions at the intersection of gravity and quantum theory. I am particularly interested in exploring foundational aspects of spacetime and understanding how classical and quantum ideas converge in extreme physical settings.
-         enjoy thinking deeply, collaborating widely, and sharing ideas through conferences and conversations. At the heart of it, I’m drawn to the elegance and mystery of fundamental physics — and the challenge of making sense of it..</em></p>
+   <h2>About Me</h2>
+    <p>
+        <em>
+        I am a Postdoctoral Fellow at Ariel University, Israel, working with Prof. Sergey Bondarenko. My research is broadly focused on questions at the intersection of gravity and quantum theory. I am particularly interested in exploring foundational aspects of spacetime and understanding how classical and quantum ideas converge in extreme physical settings.
+        </em>
+    </p>
+    <p>
+        <em>
+        I enjoy thinking deeply, collaborating widely, and sharing ideas through conferences and conversations. At the heart of it, I’m drawn to the elegance and mystery of fundamental physics — and the challenge of making sense of it.
+        </em>
+    </p>
 </section>
 
 <section id="research">
