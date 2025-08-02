@@ -4,174 +4,156 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raghvendra Singh | Homepage</title>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            accent: '#0d9488'
-          }
-        }
-      }
-    }
-  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    :root { --accent: #0d9488; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f3f8fc;
     }
+    .section-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .card-border {
+      border-top: 4px solid var(--accent);
+    }
   </style>
 </head>
-<body class="text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
+<body class="text-gray-800">
   <!-- Header -->
-  <header class="bg-blue-900 dark:bg-gray-900 text-white py-8 px-6">
-    <div class="max-w-5xl mx-auto flex flex-col items-center gap-4 relative">
-      <img loading="lazy" src="IMG20191026014115.jpg" alt="Raghvendra Singh" class="rounded-full w-32 h-32 object-cover shadow-lg" />
+  <header class="bg-blue-900 text-white py-10 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col items-center gap-4">
+      <img src="IMG20191026014115.jpg" alt="Raghvendra Singh" class="rounded-full w-32 h-32 object-cover shadow-lg" />
       <h1 class="text-3xl sm:text-4xl font-extrabold">Raghvendra Singh</h1>
       <h3 class="text-xl sm:text-2xl">Postdoctoral Fellow, Ariel University, Israel</h3>
-      <div class="flex gap-4 mt-4">
-        <a href="/assets/Raghav_CV.pdf" download class="px-4 py-2 bg-accent text-white rounded-full shadow hover:bg-accent/90">Download CV</a>
-        <button id="dm-toggle" class="px-4 py-2 bg-white text-gray-800 rounded-full shadow hover:opacity-90">Toggle Dark</button>
-      </div>
     </div>
   </header>
 
   <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow text-center py-3 text-lg font-semibold text-accent">
-    <a href="#about" class="mx-4 hover:text-accent/80">About</a>
-    <a href="#research" class="mx-4 hover:text-accent/80">Research</a>
-    <a href="#academics" class="mx-4 hover:text-accent/80">Academics</a>
-    <a href="#talks" class="mx-4 hover:text-accent/80">Talks</a>
-    <a href="#publications" class="mx-4 hover:text-accent/80">Publications</a>
-    <a href="#contact" class="mx-4 hover:text-accent/80">Contact</a>
+  <nav class="bg-white shadow text-center py-4 text-lg font-semibold text-blue-800">
+    <a href="#about" class="mx-4 hover:underline">About</a>
+    <a href="#research" class="mx-4 hover:underline">Research</a>
+    <a href="#academics" class="mx-4 hover:underline">Academics</a>
+    <a href="#talks" class="mx-4 hover:underline">Talks</a>
+    <a href="#publications" class="mx-4 hover:underline">Publications</a>
+    <a href="#contact" class="mx-4 hover:underline">Contact</a>
   </nav>
 
   <!-- About Section -->
-  <section id="about" class="max-w-5xl mx-auto px-6 py-16 bg-white dark:bg-gray-800 rounded-xl shadow-md">
-    <h2 class="text-4xl font-extrabold mb-6 text-gray-900 dark:text-white">About Me</h2>
-    <div class="prose prose-lg dark:prose-invert text-gray-800 dark:text-gray-200">
-      <p><strong>Postdoctoral Fellow at Ariel University</strong> working on the interface between gravity and quantum theory.</p>
-      <ul>
-        <li><strong>Core Questions:</strong> Planck-scale microstructure of spacetime; semiclassical hints toward quantum gravity.</li>
-        <li><strong>Approach:</strong> Covariant Wick rotations, entropy corrections by extrinsic curvature, Riemann-bound decoherence.</li>
-        <li><strong>Values:</strong> Open collaboration, clear communication, and playful exploration.</li>
-      </ul>
+  <section id="about" class="max-w-5xl mx-auto px-6 py-16 section-card mt-8">
+    <h2 class="text-4xl font-extrabold mb-6 text-gray-900">About Me</h2>
+    <div class="prose prose-lg text-gray-800">
+      <p>
+        I am a Postdoctoral Fellow at Ariel University, Israel, working with Prof. Sergey Bondarenko. My research focuses on the interface between gravity and quantum theory — particularly in understanding how semiclassical and quantum features of spacetime manifest at different physical regimes.
+      </p>
+      <p>
+        At heart I am driven by foundational questions: What does it mean for spacetime to acquire microstructure at the Planck scale? Can semiclassical consistency hint at the rules of full quantum gravity? These puzzles guide my day‑to‑day calculations — whether tracking extrinsic curvature corrections to horizon entropy via covariant Wick rotation or showing how Riemann-tensor components set bounds on gravitational decoherence.
+      </p>
+      <p>
+        Beyond equations, I value open collaboration, clear communication, and the creative playfulness that theoretical physics affords.
+      </p>
     </div>
   </section>
 
   <!-- Research Section -->
   <section id="research" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-4xl font-extrabold mb-10 text-center text-gray-900 dark:text-white">Research Areas</h2>
+    <h2 class="text-4xl font-extrabold mb-10 text-center text-gray-900">Research Areas</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
       <!-- Card 1 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow hover:shadow-xl transition border-t-4 border-accent">
-        <div class="flex items-center gap-3 mb-4">
-          <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8zM2 20h20v2H2z"/></svg>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">Quantum & Semiclassical Gravity</h3>
+      <details class="section-card card-border p-6">
+        <summary class="text-xl font-bold cursor-pointer text-gray-900">Quantum & Semiclassical Gravity</summary>
+        <div class="mt-3 text-gray-700">
+          <p>Planck-scale quantum effects and their imprint on curved spacetime.</p>
+          <p class="mt-2"><strong>Main Goal:</strong> Covariant frameworks for spacetime breakdown.</p>
+          <p><strong>Ongoing:</strong> Singularity resolution via Wick rotations.</p>
+          <p><strong>Output:</strong> <a href="https://arxiv.org/abs/2010.01822" class="underline text-accent">Covariant Wick Rotation</a></p>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 mb-3">Planck-scale quantum effects and their imprint on classically curved spacetime.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Main Goal:</strong> Covariant frameworks for spacetime breakdown.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Ongoing:</strong> Singularity resolution via Wick rotations.</p>
-        <p class="text-gray-800 dark:text-gray-200"><strong>Output:</strong> <a href="https://arxiv.org/abs/2010.01822" class="text-accent underline">Covariant Wick Rotation</a></p>
-      </div>
+      </details>
 
       <!-- Card 2 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow hover:shadow-xl transition border-t-4 border-accent">
-        <div class="flex items-center gap-3 mb-4">
-          <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8zM2 20h20v2H2z"/></svg>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">Black Hole Physics</h3>
+      <details class="section-card card-border p-6">
+        <summary class="text-xl font-bold cursor-pointer text-gray-900">Black Hole Physics</summary>
+        <div class="mt-3 text-gray-700">
+          <p>Interior structure, horizon thermodynamics, and information retention.</p>
+          <p class="mt-2"><strong>Main Goal:</strong> Thermodynamic signatures of nonsingular cores.</p>
+          <p><strong>Ongoing:</strong> Quasiparticle-core models; entropy matching.</p>
+          <p><strong>Output:</strong> <a href="https://arxiv.org/abs/2506.02944" class="underline text-accent">Black‑Hole Interior Modelling</a></p>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 mb-3">Interior structure, horizon thermodynamics, and information retention.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Main Goal:</strong> Thermodynamic signatures of nonsingular cores.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Ongoing:</strong> Quasiparticle-core models; entropy matching.</p>
-        <p class="text-gray-800 dark:text-gray-200"><strong>Output:</strong> <a href="https://arxiv.org/abs/2506.02944" class="text-accent underline">Black-Hole Interior Modelling</a></p>
-      </div>
+      </details>
 
       <!-- Card 3 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow hover:shadow-xl transition border-t-4 border-accent">
-        <div class="flex items-center gap-3 mb-4">
-          <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8zM2 20h20v2H2z"/></svg>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">Quantum Geometry</h3>
+      <details class="section-card card-border p-6">
+        <summary class="text-xl font-bold cursor-pointer text-gray-900">Quantum Geometry</summary>
+        <div class="mt-3 text-gray-700">
+          <p>Covariant uncertainty principles and metric-phase transitions.</p>
+          <p class="mt-2"><strong>Main Goal:</strong> Lorentz invariance vs. quantum limits.</p>
+          <p><strong>Ongoing:</strong> Tensor GUP; path-integral metrics.</p>
+          <p><strong>Output:</strong> <a href="https://doi.org/10.1103/PhysRevD.105.L101501" class="underline text-accent">Relativistic GUP</a></p>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 mb-3">Covariant uncertainty principles; Wick-rotated metric phases.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Main Goal:</strong> Lorentz invariance vs. quantum limits.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Ongoing:</strong> Tensor GUP; path integrals.</p>
-        <p class="text-gray-800 dark:text-gray-200"><strong>Output:</strong> <a href="https://doi.org/10.1103/PhysRevD.105.L101501" class="text-accent underline">Relativistic GUP</a></p>
-      </div>
+      </details>
 
       <!-- Card 4 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow hover:shadow-xl transition border-t-4 border-accent">
-        <div class="flex items-center gap-3 mb-4">
-          <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8zM2 20h20v2H2z"/></svg>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">Early-Universe Cosmology</h3>
+      <details class="section-card card-border p-6">
+        <summary class="text-xl font-bold cursor-pointer text-gray-900">Early-Universe Cosmology</summary>
+        <div class="mt-3 text-gray-700">
+          <p>Geometric mechanisms for inflation: seeding, driving, and exiting.</p>
+          <p class="mt-2"><strong>Main Goal:</strong> Covariant formulation of inflation from Euclidean bridges.</p>
+          <p><strong>Ongoing:</strong> Geometric inflation; graceful-exit models.</p>
+          <p><strong>Output:</strong> <a href="https://arxiv.org/abs/2302.09038" class="underline text-accent">Quantum Decoherence Study</a></p>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 mb-3">Geometric mechanisms for inflation: seeding, driving, exiting.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Main Goal:</strong> Covariant inflation from Euclidean bridges.</p>
-        <p class="mb-1 text-gray-800 dark:text-gray-200"><strong>Ongoing:</strong> Geometric inflation; graceful exits.</p>
-        <p class="text-gray-800 dark:text-gray-200"><strong>Output:</strong> <a href="https://arxiv.org/abs/2302.09038" class="text-accent underline">Cosmic Decoherence Study</a></p>
-      </div>
+      </details>
     </div>
   </section>
 
   <!-- Academic Background -->
-  <section id="academics" class="py-16 px-6">
+  <section id="academics" class="py-16 px-6 section-card mt-8">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-extrabold mb-10 text-gray-900 dark:text-white">Academic Background</h2>
-      <div class="space-y-8">
-        <!-- PhD -->
-        <div class="bg-white p-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 border-l-4 border-accent">
-          <img loading="lazy" src="IMSc logo.png" alt="IMSc Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
-          <div class="flex-1 text-left">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">PhD in Theoretical Physics</h3>
-            <p class="text-gray-700 dark:text-gray-300">The Institute of Mathematical Sciences (IMSc), Chennai</p>
-            <p class="text-gray-700 dark:text-gray-300">Supervisor: Sujay K. Ashok</p>
-            <p class="text-gray-700 dark:text-gray-300">Co-supervisor: Dawood Kothawala (IIT Madras)</p>
-            <p class="italic text-gray-600 dark:text-gray-400">Thesis: “The Role of Spacetime Curvature in Quantum Phenomena”</p>
-          </div>
-          <img loading="lazy" src="IIT M logo.png" alt="IIT Madras Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
+      <h2 class="text-4xl font-extrabold mb-10 text-gray-900">Academic Background</h2>
+      <!-- PhD -->
+      <div class="bg-white p-6 rounded-xl shadow-md mb-8 flex flex-col sm:flex-row items-center gap-6 card-border">
+        <img src="IMSc logo.png" alt="IMSc Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
+        <div class="flex-1 text-left">
+          <h3 class="text-xl font-bold text-gray-900 mb-1">PhD in Theoretical Physics</h3>
+          <p class="text-gray-700">Institute of Mathematical Sciences (IMSc), Chennai</p>
+          <p class="text-gray-700">Supervisor: Sujay K. Ashok; Co-supervisor: Dawood Kothawala (IIT Madras)</p>
+          <p class="italic text-gray-600">Thesis: “The Role of Spacetime Curvature in Quantum Phenomena”</p>
         </div>
-        <!-- MSc -->
-        <div class="bg-white p-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 border-l-4 border-accent">
-          <img loading="lazy" src="IMSc logo.png" alt="IMSc Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
-          <div class="flex-1 text-left">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">MSc in Physics</h3>
-            <p class="text-gray-700 dark:text-gray-300">The Institute of Mathematical Sciences (IMSc), Chennai</p>
-            <p class="text-gray-700 dark:text-gray-300">Thesis Advisor: Alok Laddha (CMI)</p>
-            <p class="italic text-gray-600 dark:text-gray-400">Thesis: “Hamiltonian Formulation of Gravity”</p>
-          </div>
-          <img loading="lazy" src="CMI logo.png" alt="CMI Logo" class="w-28 h-auto object-contain" />
+        <img src="IIT M logo.png" alt="IIT Madras Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
+      </div>
+      <!-- MSc -->
+      <div class="bg-white p-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center gap-6 card-border">
+        <img src="IMSc logo.png" alt="IMSc Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
+        <div class="flex-1 text-left">
+          <h3 class="text-xl font-bold text-gray-900 mb-1">MSc in Physics</h3>
+          <p class="text-gray-700">Institute of Mathematical Sciences (IMSc), Chennai</p>
+          <p class="text-gray-700">Thesis Advisor: Alok Laddha (CMI)</p>
+          <p class="italic text-gray-600">Thesis: “Hamiltonian Formulation of Gravity”</p>
         </div>
+        <img src="CMI logo.png" alt="CMI Logo" class="w-28 h-auto object-contain" />
       </div>
     </div>
   </section>
 
   <!-- Talks Section -->
   <section id="talks" class="max-w-5xl mx-auto px-6 py-16">
-    <h2 class="text-4xl font-extrabold mb-8 text-gray-900 dark:text-white text-center">Talks & Conferences</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- talk cards here -->
+    <h2 class="text-4xl font-extrabold mb-8 text-gray-900 text-center">Talks & Conferences</h2>
+    <div class="space-y-8">
+      <!-- talk cards -->
     </div>
   </section>
 
   <!-- Publications Section -->
-  <section id="publications" class="py-16 px-6 text-center">
+  <section id="publications" class="bg-gray-50 py-16 px-6 text-center">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-extrabold mb-6 text-gray-900 dark:text-white">Publications</h2>
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">Indexed on Google Scholar and ORCID for up-to-date metrics.</p>
-      <div class="flex justify-center gap-6">
-        <a href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank">
-          <img src="https://img.shields.io/badge/Google%20Scholar-Profile-blue?logo=google-scholar" alt="Google Scholar Profile" />
-        </a>
-        <a href="https://orcid.org/0000-0000-0000-0000" target="_blank">
-          <img src="https://img.shields.io/badge/ORCID-0000-0000-0000-0000-green?logo=orcid" alt="ORCID Profile" />
-        </a>
-      </div>
+      <h2 class="text-4xl font-extrabold mb-6 text-gray-800">Publications</h2>
+      <p class="text-lg text-gray-700 mb-4">My research publications are indexed on Google Scholar.</p>
+      <a href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank"
+         class="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition shadow-lg">
+        📚 View Google Scholar Profile
+      </a>
     </div>
   </section>
 
@@ -187,12 +169,5 @@
   <footer class="bg-blue-900 text-white text-center py-4 text-sm">
     &copy; 2025 Raghvendra Singh. All Rights Reserved.
   </footer>
-
-  <script>
-    const btn = document.getElementById('dm-toggle');
-    btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
-  </script>
 </body>
 </html>
