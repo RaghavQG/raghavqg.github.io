@@ -4,116 +4,129 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raghvendra Singh | Ariel University</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    .fade-in {
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .card-toggle .details { display: none; }
+    .card-toggle.active .details { display: block; }
   </style>
+  <script>
+    function toggleDetails(id) {
+      document.querySelectorAll('.card-toggle').forEach(card => {
+        if (card.id !== id) card.classList.remove('active');
+      });
+      document.getElementById(id).classList.toggle('active');
+    }
+  </script>
 </head>
-<body class="bg-gradient-to-br from-sky-100 to-blue-50 text-gray-800">
-  <header class="bg-indigo-700 text-white py-6 shadow-lg fade-in">
-    <div class="container mx-auto flex flex-col items-center">
-      <img src="IMG20191026014115.jpg" alt="Raghvendra Singh" class="w-32 h-32 rounded-full shadow-md mb-4" />
-      <h1 class="text-3xl font-bold">Raghvendra Singh</h1>
-      <h3 class="text-lg font-light mt-1">Postdoctoral Fellow, Ariel University, Israel</h3>
+<body class="bg-gray-100 text-gray-900">
+
+<!-- Header -->
+<header class="bg-blue-900 text-white py-10 px-4 flex flex-col md:flex-row items-center justify-center gap-8">
+  <img src="IMG20191026014115.jpg" alt="Raghvendra Singh" class="w-32 h-32 rounded-full shadow-lg object-cover" />
+  <div>
+    <h1 class="text-3xl font-bold">Raghvendra Singh</h1>
+    <h3 class="text-lg">Ariel University, Israel</h3>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav class="bg-white shadow text-center py-4">
+  <a href="#about" class="mx-4 text-blue-700 font-semibold hover:underline">About</a>
+  <a href="#research" class="mx-4 text-blue-700 font-semibold hover:underline">Research</a>
+  <a href="#academics" class="mx-4 text-blue-700 font-semibold hover:underline">Academic</a>
+  <a href="#talks" class="mx-4 text-blue-700 font-semibold hover:underline">Talks</a>
+  <a href="#contact" class="mx-4 text-blue-700 font-semibold hover:underline">Contact</a>
+</nav>
+
+<!-- About -->
+<section id="about" class="max-w-4xl mx-auto px-4 py-12">
+  <h2 class="text-2xl font-bold mb-6">About Me</h2>
+  <p class="mb-4">I am a Postdoctoral Fellow at Ariel University, Israel, working with Prof. Sergey Bondarenko. My research focuses on the interface between gravity and quantum theory — particularly in understanding how semiclassical and quantum features of spacetime manifest at different physical regimes.</p>
+  <p class="mb-4">At heart I am driven by foundational questions. What does it mean for spacetime to acquire microstructure at the Planck scale? Can semiclassical consistency already hint at the rules of full quantum gravity? These puzzles guide my day‑to‑day calculations — whether I am tracking how extrinsic curvature corrects horizon entropy via a covariant Wick rotation, or showing that tidal components of the Riemann tensor set universal bounds on gravitational decoherence.</p>
+  <p>Beyond the equations I value open collaboration, clear communication, and the creative playfulness that theoretical physics affords. Whether in seminars, conferences, or impromptu whiteboard sessions, I see research as a collective endeavour: refining our questions is often as illuminating as chasing the answers.</p>
+</section>
+
+<!-- Research -->
+<section id="research" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-10">Research</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <div id="card1" onclick="toggleDetails('card1')" class="card-toggle cursor-pointer rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 text-white p-6 shadow">
+      <h3 class="text-xl font-semibold mb-1">Quantum & Semiclassical Gravity</h3>
+      <p class="text-sm">Planck‑scale quantum effects and curved space‑time.</p>
+      <div class="details mt-4 text-white text-sm">
+        <p><strong>Goal:</strong> Construct covariant semiclassical models of spacetime microstructure.</p>
+        <p><strong>Ongoing:</strong> Black-hole interior with backreaction; Wick rotation models.</p>
+        <p><strong>Output:</strong> <a href="https://arxiv.org/abs/2506.02944" target="_blank" class="underline">arXiv:2506.02944</a></p>
+      </div>
     </div>
-  </header>
 
-  <nav class="bg-white shadow sticky top-0 z-50 text-center py-2 fade-in">
-    <a href="#about" class="mx-3 text-indigo-700 font-semibold hover:underline">About</a>
-    <a href="#research" class="mx-3 text-indigo-700 font-semibold hover:underline">Research</a>
-    <a href="#academics" class="mx-3 text-indigo-700 font-semibold hover:underline">Academics</a>
-    <a href="#publications" class="mx-3 text-indigo-700 font-semibold hover:underline">Publications</a>
-    <a href="#talks" class="mx-3 text-indigo-700 font-semibold hover:underline">Talks</a>
-    <a href="#contact" class="mx-3 text-indigo-700 font-semibold hover:underline">Contact</a>
-  </nav>
-
-  <main class="px-6 py-10 max-w-4xl mx-auto space-y-16">
-    <section id="about" class="fade-in">
-      <h2 class="text-3xl font-bold mb-4">About Me</h2>
-      <p class="mb-4">I am a Postdoctoral Fellow at Ariel University, Israel, working with Prof. Sergey Bondarenko. My research focuses on the interface between gravity and quantum theory — particularly in understanding how semiclassical and quantum features of spacetime manifest at different physical regimes.</p>
-      <p class="mb-4">At heart I am driven by foundational questions. What does it mean for spacetime to acquire microstructure at the Planck scale? Can semiclassical consistency already hint at the rules of full quantum gravity? These puzzles guide my day‑to‑day calculations — whether I am tracking how extrinsic curvature corrects horizon entropy via a covariant Wick rotation, or showing that tidal components of the Riemann tensor set universal bounds on gravitational decoherence.</p>
-      <p>Beyond the equations I value open collaboration, clear communication, and the creative playfulness that theoretical physics affords. Whether in seminars, conferences, or impromptu whiteboard sessions, I see research as a collective endeavour: refining our questions is often as illuminating as chasing the answers.</p>
-    </section>
-
-    <section id="research" class="fade-in">
-      <h2 class="text-3xl font-bold mb-4">Research Areas</h2>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-5 rounded-xl shadow-lg">
-          <h3 class="text-xl font-semibold mb-2">Quantum & Semiclassical Gravity</h3>
-          <p>Planck-scale quantum effects and their imprint on classically curved space-time.</p>
-        </div>
-        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-5 rounded-xl shadow-lg">
-          <h3 class="text-xl font-semibold mb-2">Black Hole Physics</h3>
-          <p>Interior structure, horizon thermodynamics and information retention.</p>
-        </div>
-        <div class="bg-gradient-to-br from-yellow-500 to-amber-500 text-white p-5 rounded-xl shadow-lg">
-          <h3 class="text-xl font-semibold mb-2">Quantum Geometry</h3>
-          <p>Covariant uncertainty principles and Wick-rotated metric phases.</p>
-        </div>
-        <div class="bg-gradient-to-br from-rose-500 to-pink-500 text-white p-5 rounded-xl shadow-lg">
-          <h3 class="text-xl font-semibold mb-2">Early-Universe Cosmology</h3>
-          <p>Geometric mechanisms capable of seeding, driving and ending cosmic inflation.</p>
-        </div>
+    <div id="card2" onclick="toggleDetails('card2')" class="card-toggle cursor-pointer rounded-lg bg-gradient-to-br from-emerald-600 to-teal-500 text-white p-6 shadow">
+      <h3 class="text-xl font-semibold mb-1">Black‑Hole Physics</h3>
+      <p class="text-sm">Interior structure and horizon thermodynamics.</p>
+      <div class="details mt-4 text-white text-sm">
+        <p><strong>Goal:</strong> Model singularity-free cores consistent with thermodynamics.</p>
+        <p><strong>Ongoing:</strong> Effective field theory across horizon-to-center.</p>
+        <p><strong>Output:</strong> <a href="https://arxiv.org/abs/2506.02944" class="underline">Quasiparticle Core</a></p>
       </div>
-    </section>
+    </div>
 
-    <section id="academics" class="fade-in">
-      <h2 class="text-3xl font-bold mb-4">Academic Details</h2>
-      <ul class="list-disc list-inside space-y-2">
-        <li><strong>PhD:</strong> IMSc Chennai — Supervisor: Sujay K Ashok; Co-supervisor: Dawood Kothawala (IIT Madras)<br><em>Thesis:</em> "The Role of Spacetime Curvature in Quantum Phenomena at Various Length Scales"</li>
-        <li><strong>MSc:</strong> IMSc Chennai — Thesis Advisor: Alok Laddha (CMI)<br><em>Thesis:</em> "Hamiltonian Formulation of Gravity"</li>
-      </ul>
-      <p class="mt-4"><a href="cv_raghvendra.pdf" class="text-indigo-600 hover:underline">📄 Download my CV</a></p>
-    </section>
-
-    <section id="publications" class="fade-in">
-      <h2 class="text-3xl font-bold mb-4">Selected Publications</h2>
-      <p>Explore my full publication list on <a href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank" class="text-blue-600 hover:underline">Google Scholar</a>.</p>
-    </section>
-
-    <section id="talks" class="fade-in">
-      <h2 class="text-3xl font-bold mb-4">Talks and Conferences</h2>
-      <div class="space-y-6">
-        <div class="p-5 border rounded-lg bg-white shadow-sm">
-          <h3 class="text-xl font-semibold">PIRT 2025 — Physical Interpretations of Relativity Theory</h3>
-          <p class="text-sm text-gray-600">July 7–10, 2025, Moscow, Russia</p>
-          <p class="mt-1 italic">Talk: “Exploring Entropy in de Sitter Space Using the Covariant Euclidean Approach”</p>
-          <p class="mt-2 text-yellow-600 font-semibold">🏅 Best Talk Award (PIRT 2025)</p>
-          <a href="Singh.pdf" target="_blank" class="text-indigo-600 hover:underline">📄 View Certificate</a>
-        </div>
-
-        <div class="p-5 border rounded-lg bg-white shadow-sm">
-          <h3 class="text-xl font-semibold">Spontaneous Workshop XVII — Hot Topics in Modern Cosmology</h3>
-          <p class="text-sm text-gray-600">April 7–11, 2025</p>
-          <p class="mt-1 italic">Talk: “Euclidean-Lorentzian Nexus: Geometry, Entropy, and Inflation”</p>
-          <a href="https://www.cpt.univ-mrs.fr/~cosmo/SW_2025/index.php" target="_blank" class="text-indigo-600 hover:underline">🔗 Workshop Website</a>
-        </div>
+    <div id="card3" onclick="toggleDetails('card3')" class="card-toggle cursor-pointer rounded-lg bg-gradient-to-br from-amber-500 to-yellow-400 text-white p-6 shadow">
+      <h3 class="text-xl font-semibold mb-1">Quantum Geometry</h3>
+      <p class="text-sm">Covariant uncertainty principles, Wick rotation.</p>
+      <div class="details mt-4 text-white text-sm">
+        <p><strong>Goal:</strong> Capture quantum fluctuations via geometric observables.</p>
+        <p><strong>Ongoing:</strong> Relativistic GUP; Wick rotated metric phases.</p>
+        <p><strong>Output:</strong> <a href="https://arxiv.org/abs/2010.01822" class="underline">EPJ C 83 (2023)</a></p>
       </div>
-    </section>
+    </div>
 
-    <section id="contact" class="fade-in">
-      <h2 class="text-3xl font-bold mb-4">Contact</h2>
-      <p>Email: <a href="mailto:raghvendra.imsc@gmail.com" class="text-blue-600 hover:underline">raghvendra.imsc@gmail.com</a> / <a href="mailto:raghvendra@ariel.ac.il" class="text-blue-600 hover:underline">raghvendra@ariel.ac.il</a></p>
-      <div class="mt-4 flex space-x-4 text-xl">
-        <a href="https://scholar.google.com" class="text-gray-700 hover:text-blue-600"><i class="fab fa-google-scholar"></i></a>
-        <a href="https://github.com/RaghavQG" class="text-gray-700 hover:text-gray-900"><i class="fab fa-github"></i></a>
-        <a href="https://orcid.org" class="text-gray-700 hover:text-green-600"><i class="fab fa-orcid"></i></a>
+    <div id="card4" onclick="toggleDetails('card4')" class="card-toggle cursor-pointer rounded-lg bg-gradient-to-br from-pink-600 to-rose-500 text-white p-6 shadow">
+      <h3 class="text-xl font-semibold mb-1">Early‑Universe Cosmology</h3>
+      <p class="text-sm">Geometry-driven inflation and graceful exit.</p>
+      <div class="details mt-4 text-white text-sm">
+        <p><strong>Goal:</strong> Design natural inflation mechanisms from geometry.</p>
+        <p><strong>Ongoing:</strong> Euclidean bridges in pre-inflationary phase.</p>
+        <p><strong>Output:</strong> Coming soon</p>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <footer class="text-center text-sm py-4 bg-indigo-700 text-white mt-12">
-    &copy; 2025 Raghvendra Singh. All Rights Reserved.
-  </footer>
+  </div>
+</section>
+
+<!-- Academics -->
+<section id="academics" class="max-w-4xl mx-auto px-4 py-12">
+  <h2 class="text-2xl font-bold mb-6">Academic Background</h2>
+  <ul class="list-disc ml-6">
+    <li><strong>PhD:</strong> IMSc Chennai — Thesis: <em>The Role of Spacetime Curvature in Quantum Phenomena at Various Length Scales</em><br>Supervisors: Sujay K Ashok & Dawood Kothawala (IIT Madras)</li>
+    <li><strong>MSc:</strong> IMSc Chennai — Thesis: <em>Hamiltonian Formulation of Gravity</em><br>Advisor: Alok Laddha (CMI)</li>
+  </ul>
+</section>
+
+<!-- Talks -->
+<section id="talks" class="max-w-4xl mx-auto px-4 py-12">
+  <h2 class="text-2xl font-bold mb-6">Talks & Conferences</h2>
+  <ul class="list-disc ml-6 mb-4">
+    <li><strong>PIRT 2025</strong> (Moscow, 7–10 July 2025): <em>Exploring Entropy in de Sitter Space Using the Covariant Euclidean Approach</em><br>
+      <strong>Award:</strong> <span class="text-yellow-600 font-semibold">🏅 Best Talk Award (PIRT 2025)</span><br>
+      <a href="Singh.pdf" target="_blank" class="text-blue-700 underline">📄 View Certificate</a>
+    </li>
+    <li><strong>Spontaneous Workshop XVII</strong> (Cassis, 20–24 May 2025): <em>Euclidean–Lorentzian Nexus: Geometry, Entropy, and Inflation</em><br>
+      <a href="https://www.cpt.univ-mrs.fr/~cosmo/SW_2025/index.php" class="text-blue-700 underline" target="_blank">🔗 Workshop Website</a>
+    </li>
+  </ul>
+  <p>More about talks, seminars, and conference presentations coming soon.</p>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="bg-blue-900 text-white py-8 text-center">
+  <h2 class="text-xl font-semibold">Contact</h2>
+  <p>Email: <a href="mailto:raghvendra.imsc@gmail.com" class="underline">raghvendra.imsc@gmail.com</a> | <a href="mailto:raghvendra@ariel.ac.il" class="underline">raghvendra@ariel.ac.il</a></p>
+</section>
+
+<footer class="bg-gray-800 text-white text-center py-4 text-sm">
+  &copy; 2025 Raghvendra Singh. All rights reserved.
+</footer>
+
 </body>
 </html>
