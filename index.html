@@ -1,192 +1,344 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raghvendra Singh | Homepage</title>
+  <title>Raghvendra Singh | Theoretical Physics</title>
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f3f8fc;
-    }
+    body { font-family: "Inter", sans-serif; }
   </style>
 </head>
-<body class="text-gray-800">
-  <!-- Header -->
-  <header class="bg-blue-900 text-white py-10 px-6">
-    <div class="max-w-5xl mx-auto flex flex-col items-center gap-4">
-      <img src="IMG20191026014115.jpg" alt="Raghvendra Singh" class="rounded-full w-32 h-32 object-cover shadow-lg" />
-      <h1 class="text-3xl sm:text-4xl font-extrabold">Raghvendra Singh</h1>
-      <h3 class="text-xl sm:text-2xl">Postdoctoral Fellow, Ariel University, Israel</h3>
+
+<body class="bg-white text-slate-900 antialiased">
+  <!-- Top bar -->
+  <header class="border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-5 py-10">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div class="flex items-center gap-5">
+          <!-- Photo -->
+          <img
+            src="IMG20191026014115.jpg"
+            alt="Raghvendra Singh"
+            class="w-24 h-24 rounded-full object-cover border border-slate-200"
+          />
+          <div>
+            <h1 class="text-3xl font-bold tracking-tight">Raghvendra Singh</h1>
+            <p class="mt-1 text-slate-700">
+              Postdoctoral Fellow, <span class="font-semibold">Ariel University</span> (Israel)
+            </p>
+            <p class="text-slate-600 text-sm mt-1">
+              Theoretical Physics • Euclidean Quantum Gravity • Quantum Gravity Phenomenology • Cosmology
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div class="flex flex-wrap gap-2 sm:justify-end">
+          <a href="#research" class="px-3 py-1.5 text-sm rounded-md border border-slate-300 hover:border-slate-400">
+            Research
+          </a>
+          <a href="#papers" class="px-3 py-1.5 text-sm rounded-md border border-slate-300 hover:border-slate-400">
+            Selected papers
+          </a>
+          <a href="#talks" class="px-3 py-1.5 text-sm rounded-md border border-slate-300 hover:border-slate-400">
+            Talks
+          </a>
+          <a href="#contact" class="px-3 py-1.5 text-sm rounded-md border border-slate-300 hover:border-slate-400">
+            Contact
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-700">
+        <a class="underline underline-offset-4 hover:text-slate-900" href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank" rel="noreferrer">
+          Google Scholar
+        </a>
+        <a class="underline underline-offset-4 hover:text-slate-900" href="https://arxiv.org/search/?searchtype=author&query=Singh%2C+Raghvendra" target="_blank" rel="noreferrer">
+          arXiv
+        </a>
+        <a class="underline underline-offset-4 hover:text-slate-900" href="CV.pdf" target="_blank" rel="noreferrer">
+          CV (PDF)
+        </a>
+        <a class="underline underline-offset-4 hover:text-slate-900" href="#contact">
+          Email
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Navigation -->
-  <nav class="bg-white shadow text-center py-4 text-lg font-semibold text-blue-800">
-    <a href="#about" class="mx-4 hover:underline">About</a>
-    <a href="#research" class="mx-4 hover:underline">Research</a>
-    <a href="#academics" class="mx-4 hover:underline">Academics</a>
-    <a href="#talks" class="mx-4 hover:underline">Talks</a>
-    <a href="#publications" class="mx-4 hover:underline">Publications</a>
-    <a href="#contact" class="mx-4 hover:underline">Contact</a>
-  </nav>
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto px-5">
 
-  <!-- About Section -->
-<section id="about" class="max-w-5xl mx-auto px-6 py-16">
-  <h2 class="text-4xl font-extrabold mb-8 text-center">About Me</h2> <!-- only this line changed -->
-  <div class="prose prose-lg">
-    <p>
-        I am a Postdoctoral Fellow at Ariel University, Israel, working with Prof. Sergey Bondarenko. My research focuses on the interface between gravity and quantum theory — particularly in understanding how semiclassical and quantum features of spacetime manifest at different physical regimes.
-      </p>
-      <p>
-        At heart I am driven by foundational questions. What does it mean for spacetime to acquire microstructure at the Planck scale? Can semiclassical consistency already hint at the rules of full quantum gravity? These puzzles guide my day‑to‑day calculations — whether I am tracking how extrinsic curvature corrects horizon entropy via a covariant Wick rotation, or showing that tidal components of the Riemann tensor set universal bounds on gravitational decoherence.
-      </p>
-      <p>
-        Beyond the equations I value open collaboration, clear communication, and the creative playfulness that theoretical physics affords. Whether in seminars, conferences, or impromptu whiteboard sessions, I see research as a collective endeavour: refining our questions is often as illuminating as chasing the answers.
-  </div>
-</section>
-
-      </p>
-    </div>
-  </section>
-
-  <!-- Research Section -->
-  <section id="research" class="max-w-6xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-4xl font-extrabold mb-10">Research Areas</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-      <!-- Card 1 -->
-      <details class="bg-violet-500 text-white p-6 rounded-2xl shadow-lg">
-        <summary class="text-xl font-bold cursor-pointer">Quantum & Semiclassical Gravity</summary>
-        <p class="mt-3 text-white/90">Planck-scale quantum effects and their imprint on classically curved space-time.</p>
-        <p class="mt-3">Main Goal: Formulate covariant frameworks where classical spacetime breaks down.</p>
-        <p>Ongoing: Singularity resolution, effective actions from Wick rotations.</p>
-        <p>Output: <a href="https://arxiv.org/abs/2010.01822" class="underline text-white">Covariant Wick Rotation</a></p>
-      </details>
-
-      <!-- Card 2 -->
-      <details class="bg-green-500 text-white p-6 rounded-2xl shadow-lg">
-        <summary class="text-xl font-bold cursor-pointer">Black Hole Physics</summary>
-        <p class="mt-3 text-white/90">Interior structure, horizon thermodynamics and information retention.</p>
-        <p class="mt-3">Main Goal: Explore thermodynamic signatures of singularity-free interiors.</p>
-        <p>Ongoing: Quasiparticle-core models, entropy matching.</p>
-        <p>Output: <a href="https://arxiv.org/abs/2506.02944" class="underline text-white">Black‑Hole Interior Modelling</a></p>
-      </details>
-
-      <!-- Card 3 -->
-      <details class="bg-yellow-500 text-white p-6 rounded-2xl shadow-lg">
-        <summary class="text-xl font-bold cursor-pointer">Foundations of Quantum Geometry</summary>
-        <p class="mt-3 text-white/90">Covariant uncertainty principles and Wick-rotated metric phases.</p>
-        <p class="mt-3">Main Goal: Reconcile local Lorentz invariance with quantum limits.</p>
-        <p>Ongoing: Tensor GUP, path integrals, metric fluctuations.</p>
-        <p>Output: <a href="https://doi.org/10.1103/PhysRevD.105.L101501" class="underline text-white">Relativistic GUP</a></p>
-      </details>
-
-      <!-- Card 4 -->
-      <details class="bg-pink-500 text-white p-6 rounded-2xl shadow-lg">
-        <summary class="text-xl font-bold cursor-pointer">Early-Universe Cosmology</summary>
-        <p class="mt-3 text-white/90">Geometric mechanisms capable of seeding, driving and ending cosmic inflation.</p>
-        <p class="mt-3">Main Goal: Covariant formulation of inflation from curved Euclidean patches.</p>
-        <p>Ongoing: Geometric inflation, graceful exits via bridge geometries.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Academic Background -->
-  <section id="academics" class="py-16 px-6 section-card mt-8">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-extrabold mb-10 text-gray-900">Academic Background</h2>
-      <!-- PhD -->
-      <div class="bg-white p-6 rounded-xl shadow-md mb-8 flex flex-col sm:flex-row items-center gap-6 card-border">
-        <img src="IMSc logo.png" alt="IMSc Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
-        <div class="flex-1 text-left">
-          <h3 class="text-xl font-bold text-gray-900 mb-1">PhD in Theoretical Physics</h3>
-          <p class="text-gray-700">Institute of Mathematical Sciences (IMSc), Chennai</p>
-          <p class="text-gray-700">Supervisor: Sujay K. Ashok; Co-supervisor: Dawood Kothawala (IIT Madras)</p>
-          <p class="italic text-gray-600">Thesis: “The Role of Spacetime Curvature in Quantum Phenomena at Various Length Scales”</p>
-        </div>
-        <img src="IIT M logo.png" alt="IIT Madras Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
+    <!-- About -->
+    <section id="about" class="py-12">
+      <h2 class="text-xl font-semibold tracking-tight">About</h2>
+      <div class="mt-4 space-y-4 text-slate-800 leading-relaxed">
+        <p>
+          I am a postdoctoral fellow at Ariel University, working with Prof. Sergey Bondarenko.
+          My work focuses on semiclassical and Euclidean approaches to gravity, with the goal of making
+          Euclidean continuation, boundary terms, and observer-dependent constructions precise and covariant.
+        </p>
+        <p>
+          I am especially interested in extracting operational outputs—Euclidean action, temperature/entropy,
+          and phase/holonomy data—that can be compared across semiclassical gravity, QFT in curved spacetime,
+          and controlled toy models.
+        </p>
       </div>
-      <!-- MSc -->
-      <div class="bg-white p-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center gap-6 card-border">
-        <img src="IMSc logo.png" alt="IMSc Logo" class="w-20 h-20 object-contain sm:w-24 sm:h-24" />
-        <div class="flex-1 text-left">
-          <h3 class="text-xl font-bold text-gray-900 mb-1">MSc in Physics</h3>
-          <p class="text-gray-700">Institute of Mathematical Sciences (IMSc), Chennai</p>
-          <p class="text-gray-700">Thesis Advisor: Alok Laddha (CMI)</p>
-          <p class="italic text-gray-600">Thesis: “Hamiltonian Formulation of Gravity”</p>
-        </div>
-        <img src="CMI logo.png" alt="CMI Logo" class="w-28 h-auto object-contain" />
-      </div>
-    </div>
-  </section>
+    </section>
 
- <!-- Talks Section -->
-<section id="talks" class="max-w-5xl mx-auto px-6 py-16 text-center">
-  <h2 class="text-4xl font-extrabold mb-8">Talks & Conferences</h2>
-  <div class="space-y-8">
-    
-    <!-- Talk 1 -->
-    <div class="bg-white shadow-lg rounded-xl p-6 border-l-4 border-indigo-500">
-      <div class="flex flex-col sm:flex-row justify-between items-start">
-        <div>
-          <h4 class="text-xl font-semibold">PIRT 2025</h4>
-          <p class="text-gray-700 mt-1 italic">
-            "Exploring Entropy in de Sitter Space Using the Covariant Euclidean Approach"
-          </p>
-          <a href="https://pirt.bmstu.ru/en/" class="text-indigo-600 underline text-sm">Conference Homepage ↗</a>
-          <p class="mt-2 text-yellow-700 font-semibold">
-            🏅 Best Talk Award — <a href="Singh.pdf" class="underline">View Certificate</a>
+    <!-- Research -->
+    <section id="research" class="py-12 border-t border-slate-200">
+      <h2 class="text-xl font-semibold tracking-tight">Research</h2>
+
+      <!-- Research snapshot -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="p-5 rounded-xl border border-slate-200">
+          <h3 class="font-semibold text-slate-900">Current emphasis</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-800 list-disc list-inside">
+            <li>Covariant Euclidean continuation in curved spacetimes</li>
+            <li>Boundary/corner terms and gravitational thermodynamics</li>
+            <li>Curvature-controlled reduced dynamics and decoherence bounds</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-200">
+          <h3 class="font-semibold text-slate-900">Tools</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-800 list-disc list-inside">
+            <li>Hypersurface geometry and observer-covariant constructions</li>
+            <li>Euclidean action methods and complex time contours</li>
+            <li>Effective descriptions tied to curvature invariants</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-200">
+          <h3 class="font-semibold text-slate-900">Physical outputs</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-800 list-disc list-inside">
+            <li>Euclidean action and saddle selection</li>
+            <li>Temperature/entropy from regularity + boundary terms</li>
+            <li>Phases/holonomies and dynamical signatures</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Research areas (your precise list) -->
+      <div class="mt-10">
+        <h3 class="text-lg font-semibold tracking-tight">Research areas</h3>
+
+        <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl border border-slate-200">
+            <h4 class="font-semibold">Euclidean Quantum Gravity</h4>
+            <p class="mt-2 text-sm text-slate-700">
+              Euclidean methods in semiclassical gravity with emphasis on covariant Euclideanization,
+              boundary terms, and thermodynamic interpretations of horizons.
+            </p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-800 list-disc list-inside">
+              <li>Covariant Euclidean continuation & complex saddles</li>
+              <li>GHY/corner terms and action-based thermodynamics</li>
+              <li>Observer-covariant formulations of regularity/temperature</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200">
+            <h4 class="font-semibold">Quantum Gravity Phenomenology</h4>
+            <p class="mt-2 text-sm text-slate-700">
+              Operational and effective probes of quantum-gravitational effects, tied to curvature data
+              and controlled reduced dynamics.
+            </p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-800 list-disc list-inside">
+              <li>Curvature-induced decoherence / universal bounds</li>
+              <li>Effective dynamics from semiclassical consistency</li>
+              <li>Relativistic/covariant uncertainty structures (GUP-like)</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200">
+            <h4 class="font-semibold">Theoretical Cosmology</h4>
+            <p class="mt-2 text-sm text-slate-700">
+              Semiclassical and Euclidean approaches to early-universe questions, including initial conditions
+              and Euclidean–Lorentzian matching.
+            </p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-800 list-disc list-inside">
+              <li>Euclidean caps / contour proposals for cosmological states</li>
+              <li>Geometric mechanisms in early-universe dynamics</li>
+              <li>Links between action principles and cosmological observables</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Program overview figure -->
+      <div class="mt-10 p-5 rounded-xl border border-slate-200">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+          <div>
+            <h3 class="text-lg font-semibold tracking-tight">Research program overview</h3>
+            <p class="mt-1 text-sm text-slate-700">
+              Schematic overview connecting spacetimes/settings → covariant Euclidean methods → physical outputs.
+            </p>
+          </div>
+          <p class="text-xs text-slate-500">
+            (Place this below your research text — avoid using it as the homepage hero image.)
           </p>
         </div>
-        <span class="text-sm text-gray-500 mt-2 sm:mt-0">📅 July 7–10, 2025</span>
+
+        <!-- IMPORTANT: rename your image file accordingly -->
+        <img
+          src="research-program-overview.png"
+          alt="Research Program Overview: spacetimes and settings, covariant Euclidean methods, key outcomes and observables"
+          class="mt-4 w-full rounded-lg border border-slate-200"
+          loading="lazy"
+        />
+        <p class="mt-3 text-xs text-slate-600">
+          Figure: Overview of my research program, emphasizing covariant Euclidean continuation, hypersurface geometry,
+          and boundary terms, with outputs including Euclidean action, temperature/entropy, and phase/holonomy data.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Talk 2 -->
-    <div class="bg-white shadow-lg rounded-xl p-6 border-l-4 border-pink-500">
-      <div class="flex flex-col sm:flex-row justify-between items-start">
-        <div>
-          <h4 class="text-xl font-semibold">Spontaneous Workshop XVII</h4>
-          <p class="text-gray-700 mt-1 italic">
-            "Euclidean–Lorentzian Nexus: Geometry, Entropy, and Inflation"
-          </p>
-          <a href="https://www.cpt.univ-mrs.fr/~cosmo/SW_2025/index.php" class="text-pink-600 underline text-sm">Workshop Page ↗</a>
-          <p class="mt-2 text-transparent select-none">Placeholder</p>
-        </div>
-        <span class="text-sm text-gray-500 mt-2 sm:mt-0">📅 March 23–29, 2025</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <!-- Publications Section -->
-  <section id="publications" class="bg-gray-50 py-16 px-6 text-center">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-extrabold mb-6 text-gray-800">Publications</h2>
-      <p class="text-lg text-gray-700 mb-4">
-        My research publications are indexed on Google Scholar. Click below to view them:
+    <!-- Selected Papers -->
+    <section id="papers" class="py-12 border-t border-slate-200">
+      <h2 class="text-xl font-semibold tracking-tight">Selected papers</h2>
+      <p class="mt-3 text-sm text-slate-700">
+        (Keep this short. Let the titles carry the technical signal. Link to arXiv / journal.)
       </p>
-      <a href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank"
-         class="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition shadow-lg">
-        📚 View Google Scholar Profile
-      </a>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-gray-800 text-white py-12 px-6 text-center">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl font-bold mb-4">Contact</h2>
-      <p>Email: <a href="mailto:raghvendra.imsc@gmail.com" class="underline">raghvendra.imsc@gmail.com</a> / <a href="mailto:raghvendra@ariel.ac.il" class="underline">raghvendra@ariel.ac.il</a></p>
-    </div>
-  </section>
+      <div class="mt-5 space-y-4">
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+            <p class="font-semibold">Covariant Wick Rotation</p>
+            <div class="flex gap-4 text-sm">
+              <a href="https://arxiv.org/abs/2010.01822" target="_blank" rel="noreferrer" class="underline underline-offset-4">arXiv</a>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-slate-700">
+            Covariant formulation of Euclidean continuation in curved spacetimes and implications for semiclassical action methods.
+          </p>
+        </div>
 
-  <!-- Footer -->
-  <footer class="bg-blue-900 text-white text-center py-4 text-sm">
-    &copy; 2025 Raghvendra Singh. All Rights Reserved.
-  </footer>
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+            <p class="font-semibold">Relativistic GUP</p>
+            <div class="flex gap-4 text-sm">
+              <a href="https://doi.org/10.1103/PhysRevD.105.L101501" target="_blank" rel="noreferrer" class="underline underline-offset-4">Journal</a>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-slate-700">
+            Covariant/relativistic structure of generalized uncertainty principles and connections to momentum-space geometry.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+            <p class="font-semibold">Black-hole interior modelling (semiclassical)</p>
+            <div class="flex gap-4 text-sm">
+              <a href="https://arxiv.org/abs/2506.02944" target="_blank" rel="noreferrer" class="underline underline-offset-4">arXiv</a>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-slate-700">
+            Semiclassical modelling of interior structure with thermodynamic consistency conditions.
+          </p>
+        </div>
+
+        <div class="pt-2 text-sm text-slate-700">
+          Full list: <a href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank" rel="noreferrer" class="underline underline-offset-4">Google Scholar</a>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Academics -->
+    <section id="academics" class="py-12 border-t border-slate-200">
+      <h2 class="text-xl font-semibold tracking-tight">Academic background</h2>
+
+      <div class="mt-5 space-y-4">
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2">
+            <p class="font-semibold">PhD in Theoretical Physics — IMSc, Chennai</p>
+            <p class="text-sm text-slate-600">Supervisor: Sujay K. Ashok; Co-supervisor: Dawood Kothawala (IIT Madras)</p>
+          </div>
+          <p class="mt-2 text-sm text-slate-700 italic">
+            Thesis: “The Role of Spacetime Curvature in Quantum Phenomena at Various Length Scales”
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2">
+            <p class="font-semibold">MSc in Physics — IMSc, Chennai</p>
+            <p class="text-sm text-slate-600">Thesis advisor: Alok Laddha (CMI)</p>
+          </div>
+          <p class="mt-2 text-sm text-slate-700 italic">
+            Thesis: “Hamiltonian Formulation of Gravity”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Talks -->
+    <section id="talks" class="py-12 border-t border-slate-200">
+      <h2 class="text-xl font-semibold tracking-tight">Talks & conferences</h2>
+
+      <div class="mt-5 space-y-4">
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+            <div>
+              <p class="font-semibold">PIRT 2025</p>
+              <p class="text-sm text-slate-700 italic mt-1">
+                “Exploring Entropy in de Sitter Space Using the Covariant Euclidean Approach”
+              </p>
+              <div class="mt-2 text-sm">
+                <a href="https://pirt.bmstu.ru/en/" target="_blank" rel="noreferrer" class="underline underline-offset-4">Conference page</a>
+                <span class="mx-2 text-slate-400">•</span>
+                <span class="text-slate-700">Best Talk Award</span>
+                <span class="mx-2 text-slate-400">•</span>
+                <a href="Singh.pdf" class="underline underline-offset-4">Certificate</a>
+              </div>
+            </div>
+            <p class="text-sm text-slate-600">July 7–10, 2025</p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-200">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+            <div>
+              <p class="font-semibold">Spontaneous Workshop XVII</p>
+              <p class="text-sm text-slate-700 italic mt-1">
+                “Euclidean–Lorentzian Nexus: Geometry, Entropy, and Inflation”
+              </p>
+              <div class="mt-2 text-sm">
+                <a href="https://www.cpt.univ-mrs.fr/~cosmo/SW_2025/index.php" target="_blank" rel="noreferrer" class="underline underline-offset-4">Workshop page</a>
+              </div>
+            </div>
+            <p class="text-sm text-slate-600">March 23–29, 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-12 border-t border-slate-200">
+      <h2 class="text-xl font-semibold tracking-tight">Contact</h2>
+      <div class="mt-4 text-sm text-slate-800 space-y-2">
+        <p>
+          Email:
+          <a href="mailto:raghvendra.imsc@gmail.com" class="underline underline-offset-4">raghvendra.imsc@gmail.com</a>
+          <span class="mx-2 text-slate-400">/</span>
+          <a href="mailto:raghvendra@ariel.ac.il" class="underline underline-offset-4">raghvendra@ariel.ac.il</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="py-10 text-xs text-slate-500">
+      © <span id="year"></span> Raghvendra Singh
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
