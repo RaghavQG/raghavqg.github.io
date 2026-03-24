@@ -10,34 +10,36 @@
 
   <style>
     :root{
-      --bg: #030712;
-      --bg2: #08111f;
-      --panel: rgba(10, 18, 34, 0.72);
-      --panel-border: rgba(148, 163, 184, 0.16);
-      --text: #e5eefc;
-      --muted: #9fb0c8;
-      --accent: #7dd3fc;
-      --accent2: #a78bfa;
+      --bg0:#02050b;
+      --bg1:#06101d;
+      --bg2:#0a1324;
+      --text:#e7eefc;
+      --muted:#9cafc8;
+      --line:rgba(148,163,184,.14);
+      --panel:rgba(8,15,28,.58);
+      --panel-border:rgba(148,163,184,.13);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --accent3:#60a5fa;
     }
 
     * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(59,130,246,0.10), transparent 30%),
-        radial-gradient(circle at 80% 10%, rgba(168,85,247,0.10), transparent 28%),
-        linear-gradient(180deg, #020617 0%, #030712 50%, #020617 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(96,165,250,.10), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(167,139,250,.10), transparent 24%),
+        radial-gradient(circle at 50% 120%, rgba(14,165,233,.08), transparent 35%),
+        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 45%, var(--bg0) 100%);
       overflow-x: hidden;
     }
 
-    #space,
-    #blackhole-glow {
+    #gridCanvas,
+    #particleCanvas,
+    #lensCanvas {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -45,8 +47,9 @@
       pointer-events: none;
     }
 
-    #space { z-index: -3; }
-    #blackhole-glow { z-index: -2; }
+    #gridCanvas { z-index: -4; opacity: .95; }
+    #particleCanvas { z-index: -3; }
+    #lensCanvas { z-index: -2; }
 
     .glass {
       background: var(--panel);
@@ -54,113 +57,127 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--panel-border);
       box-shadow:
-        0 10px 30px rgba(0,0,0,0.25),
-        inset 0 1px 0 rgba(255,255,255,0.03);
-    }
-
-    .section-title {
-      letter-spacing: -0.03em;
-    }
-
-    .nav-pill {
-      border: 1px solid rgba(148,163,184,0.20);
-      background: rgba(15,23,42,0.45);
-      transition: all 0.25s ease;
-    }
-
-    .nav-pill:hover {
-      border-color: rgba(125,211,252,0.55);
-      background: rgba(15,23,42,0.75);
-      transform: translateY(-1px);
-      box-shadow: 0 0 18px rgba(125,211,252,0.10);
+        0 10px 35px rgba(0,0,0,.24),
+        inset 0 1px 0 rgba(255,255,255,.02);
     }
 
     .card {
-      background: rgba(8, 15, 30, 0.72);
-      border: 1px solid rgba(148,163,184,0.14);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      background: rgba(8, 15, 30, 0.58);
+      border: 1px solid rgba(148,163,184,.12);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: rgba(125,211,252,0.30);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.22);
+      border-color: rgba(125,211,252,.26);
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+      background: rgba(10,18,34,.68);
+    }
+
+    .nav-pill {
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(15,23,42,.36);
+      transition: all .24s ease;
+    }
+
+    .nav-pill:hover {
+      border-color: rgba(125,211,252,.48);
+      background: rgba(15,23,42,.68);
+      transform: translateY(-1px);
+      box-shadow: 0 0 18px rgba(125,211,252,.10);
     }
 
     .link {
-      color: #c8ddff;
+      color: #d6e7ff;
       text-underline-offset: 4px;
+      transition: color .2s ease;
     }
 
-    .link:hover {
-      color: white;
+    .link:hover { color: white; }
+
+    .top-border { border-color: rgba(148,163,184,.11); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-orb {
+    .hero::before {
+      content: "";
       position: absolute;
-      right: -120px;
-      top: -50px;
-      width: 320px;
-      height: 320px;
+      right: -140px;
+      top: -90px;
+      width: 380px;
+      height: 380px;
       border-radius: 9999px;
       background:
-        radial-gradient(circle at 45% 45%, rgba(255,255,255,0.22) 0 3%, rgba(125,211,252,0.24) 8%, rgba(59,130,246,0.15) 18%, rgba(99,102,241,0.10) 30%, rgba(0,0,0,0) 58%);
-      filter: blur(18px);
-      opacity: 0.9;
+        radial-gradient(circle at 45% 45%,
+          rgba(255,255,255,.22) 0 2%,
+          rgba(125,211,252,.20) 6%,
+          rgba(96,165,250,.12) 14%,
+          rgba(167,139,250,.08) 24%,
+          rgba(0,0,0,0) 55%);
+      filter: blur(24px);
       pointer-events: none;
+      opacity: .9;
     }
 
-    .hero-ring {
+    .hero::after {
+      content: "";
       position: absolute;
-      right: -30px;
-      top: 40px;
+      right: 8px;
+      top: 36px;
       width: 180px;
       height: 180px;
       border-radius: 9999px;
-      border: 1px solid rgba(125,211,252,0.18);
+      border: 1px solid rgba(125,211,252,.14);
       box-shadow:
-        0 0 40px rgba(125,211,252,0.08),
-        inset 0 0 30px rgba(167,139,250,0.06);
+        0 0 45px rgba(125,211,252,.06),
+        inset 0 0 30px rgba(167,139,250,.05);
       pointer-events: none;
     }
 
-    .subtitle {
-      color: var(--muted);
+    .profile-pic {
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.05),
+        0 14px 30px rgba(0,0,0,.28);
     }
 
-    .top-border {
-      border-color: rgba(148,163,184,0.12);
+    .section-title {
+      letter-spacing: -.03em;
     }
 
-    img.profile-pic {
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 12px 30px rgba(0,0,0,0.28);
+    .muted { color: var(--muted); }
+
+    .hero-badge {
+      background: rgba(125,211,252,.08);
+      color: #dff5ff;
+      border: 1px solid rgba(125,211,252,.16);
     }
 
     @media (max-width: 640px) {
-      .hero-orb {
-        width: 220px;
-        height: 220px;
+      .hero::before {
+        width: 260px;
+        height: 260px;
         right: -90px;
-        top: -10px;
+        top: -30px;
       }
-      .hero-ring {
-        width: 130px;
-        height: 130px;
-        right: -10px;
-        top: 55px;
+      .hero::after {
+        width: 120px;
+        height: 120px;
+        right: 10px;
+        top: 62px;
       }
     }
   </style>
 </head>
 
 <body class="antialiased">
-  <canvas id="space"></canvas>
-  <canvas id="blackhole-glow"></canvas>
+  <canvas id="gridCanvas"></canvas>
+  <canvas id="particleCanvas"></canvas>
+  <canvas id="lensCanvas"></canvas>
 
-  <header class="border-b top-border relative">
-    <div class="hero-orb"></div>
-    <div class="hero-ring"></div>
-
+  <header class="hero border-b top-border">
     <div class="max-w-5xl mx-auto px-5 py-10 relative">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <div class="flex items-center gap-5">
@@ -170,11 +187,14 @@
             class="profile-pic w-24 h-24 rounded-full object-cover border border-white/10"
           />
           <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs mb-3 hero-badge">
+              Quantum Gravity • Gravitation • Cosmology
+            </div>
             <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white">Raghvendra Singh</h1>
             <p class="mt-1 text-slate-200">
               Postdoctoral Fellow, <span class="font-semibold text-sky-300">Ariel University</span> (Israel)
             </p>
-            <p class="subtitle text-sm mt-1">
+            <p class="muted text-sm mt-1">
               Theoretical Physics • Euclidean Quantum Gravity • Quantum Gravity Phenomenology • Cosmology
             </p>
           </div>
@@ -309,12 +329,11 @@
               Schematic overview connecting spacetimes/settings → covariant Euclidean methods → physical outputs.
             </p>
           </div>
-          <p class="text-xs text-slate-500"></p>
         </div>
 
         <img
           src="research-program-overview.png"
-          alt="Research Program Overview: spacetimes and settings, covariant Euclidean methods, key outcomes and observables"
+          alt="Research Program Overview"
           class="mt-4 w-full rounded-lg border border-white/10"
           loading="lazy"
         />
@@ -458,17 +477,20 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const particleCanvas = document.getElementById("space");
+    const gridCanvas = document.getElementById("gridCanvas");
+    const gridCtx = gridCanvas.getContext("2d");
+
+    const particleCanvas = document.getElementById("particleCanvas");
     const particleCtx = particleCanvas.getContext("2d");
 
-    const glowCanvas = document.getElementById("blackhole-glow");
-    const glowCtx = glowCanvas.getContext("2d");
+    const lensCanvas = document.getElementById("lensCanvas");
+    const lensCtx = lensCanvas.getContext("2d");
 
     let w = window.innerWidth;
     let h = window.innerHeight;
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    function resizeCanvas(canvas, ctx) {
+    function setupCanvas(canvas, ctx) {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       canvas.style.width = w + "px";
@@ -479,163 +501,235 @@
     function resizeAll() {
       w = window.innerWidth;
       h = window.innerHeight;
-      resizeCanvas(particleCanvas, particleCtx);
-      resizeCanvas(glowCanvas, glowCtx);
+      setupCanvas(gridCanvas, gridCtx);
+      setupCanvas(particleCanvas, particleCtx);
+      setupCanvas(lensCanvas, lensCtx);
+      initParticles();
     }
 
-    resizeAll();
-    window.addEventListener("resize", resizeAll);
-
     const mouse = {
-      x: w * 0.65,
-      y: h * 0.28,
-      tx: w * 0.65,
-      ty: h * 0.28,
-      active: false
+      x: window.innerWidth * 0.7,
+      y: window.innerHeight * 0.24,
+      tx: window.innerWidth * 0.7,
+      ty: window.innerHeight * 0.24
     };
 
     window.addEventListener("mousemove", (e) => {
       mouse.tx = e.clientX;
       mouse.ty = e.clientY;
-      mouse.active = true;
     });
 
     window.addEventListener("mouseleave", () => {
-      mouse.active = false;
-      mouse.tx = w * 0.65;
-      mouse.ty = h * 0.28;
+      mouse.tx = window.innerWidth * 0.7;
+      mouse.ty = window.innerHeight * 0.24;
     });
 
-    const particles = [];
-    const PARTICLE_COUNT = Math.min(180, Math.floor((w * h) / 9000));
+    window.addEventListener("resize", resizeAll);
+
+    let particles = [];
+    function initParticles() {
+      const count = Math.min(150, Math.floor((w * h) / 12000));
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push(makeParticle(true));
+      }
+    }
 
     function rand(min, max) {
       return Math.random() * (max - min) + min;
     }
 
-    function resetParticle(p, initial = false) {
-      const edge = Math.floor(Math.random() * 4);
-
+    function makeParticle(initial = false) {
+      let x, y;
       if (initial) {
-        p.x = Math.random() * w;
-        p.y = Math.random() * h;
+        x = Math.random() * w;
+        y = Math.random() * h;
       } else {
-        if (edge === 0) { p.x = Math.random() * w; p.y = -20; }
-        if (edge === 1) { p.x = w + 20; p.y = Math.random() * h; }
-        if (edge === 2) { p.x = Math.random() * w; p.y = h + 20; }
-        if (edge === 3) { p.x = -20; p.y = Math.random() * h; }
+        const edge = Math.floor(Math.random() * 4);
+        if (edge === 0) { x = Math.random() * w; y = -20; }
+        if (edge === 1) { x = w + 20; y = Math.random() * h; }
+        if (edge === 2) { x = Math.random() * w; y = h + 20; }
+        if (edge === 3) { x = -20; y = Math.random() * h; }
+      }
+      return {
+        x,
+        y,
+        vx: rand(-0.12, 0.12),
+        vy: rand(-0.12, 0.12),
+        size: rand(0.8, 2.0),
+        alpha: rand(0.25, 0.8),
+        hue: rand(190, 255)
+      };
+    }
+
+    function respawnParticle(p) {
+      const np = makeParticle(false);
+      Object.assign(p, np);
+    }
+
+    function drawGrid() {
+      gridCtx.clearRect(0, 0, w, h);
+
+      const spacing = 34;
+      const radius = 190;
+      const strength = 28;
+
+      gridCtx.lineWidth = 1;
+
+      for (let y = -spacing; y <= h + spacing; y += spacing) {
+        gridCtx.beginPath();
+        for (let x = -spacing; x <= w + spacing; x += 8) {
+          const dx = x - mouse.x;
+          const dy = y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) + 0.001;
+          const influence = Math.max(0, 1 - dist / radius);
+
+          const offsetY = influence > 0 ? (dy / dist) * strength * influence * influence : 0;
+          const offsetX = influence > 0 ? (dx / dist) * strength * 0.22 * influence * influence : 0;
+
+          const px = x + offsetX;
+          const py = y + offsetY;
+
+          if (x === -spacing) gridCtx.moveTo(px, py);
+          else gridCtx.lineTo(px, py);
+        }
+        gridCtx.strokeStyle = "rgba(125,211,252,0.09)";
+        gridCtx.stroke();
       }
 
-      p.vx = rand(-0.15, 0.15);
-      p.vy = rand(-0.15, 0.15);
-      p.size = rand(0.6, 2.2);
-      p.alpha = rand(0.25, 0.9);
-      p.hue = rand(190, 260);
+      for (let x = -spacing; x <= w + spacing; x += spacing) {
+        gridCtx.beginPath();
+        for (let y = -spacing; y <= h + spacing; y += 8) {
+          const dx = x - mouse.x;
+          const dy = y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) + 0.001;
+          const influence = Math.max(0, 1 - dist / radius);
+
+          const offsetX = influence > 0 ? (dx / dist) * strength * influence * influence : 0;
+          const offsetY = influence > 0 ? (dy / dist) * strength * 0.22 * influence * influence : 0;
+
+          const px = x + offsetX;
+          const py = y + offsetY;
+
+          if (y === -spacing) gridCtx.moveTo(px, py);
+          else gridCtx.lineTo(px, py);
+        }
+        gridCtx.strokeStyle = "rgba(167,139,250,0.06)";
+        gridCtx.stroke();
+      }
     }
 
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const p = {};
-      resetParticle(p, true);
-      particles.push(p);
-    }
-
-    function drawGlow() {
-      glowCtx.clearRect(0, 0, w, h);
-
-      const gx = mouse.x;
-      const gy = mouse.y;
-
-      const outer = glowCtx.createRadialGradient(gx, gy, 0, gx, gy, 220);
-      outer.addColorStop(0, "rgba(255,255,255,0.10)");
-      outer.addColorStop(0.08, "rgba(125,211,252,0.12)");
-      outer.addColorStop(0.18, "rgba(56,189,248,0.08)");
-      outer.addColorStop(0.32, "rgba(99,102,241,0.06)");
-      outer.addColorStop(0.55, "rgba(0,0,0,0.16)");
-      outer.addColorStop(1, "rgba(0,0,0,0)");
-
-      glowCtx.beginPath();
-      glowCtx.fillStyle = outer;
-      glowCtx.arc(gx, gy, 220, 0, Math.PI * 2);
-      glowCtx.fill();
-
-      glowCtx.beginPath();
-      glowCtx.strokeStyle = "rgba(125,211,252,0.28)";
-      glowCtx.lineWidth = 1.2;
-      glowCtx.arc(gx, gy, 34, 0, Math.PI * 2);
-      glowCtx.stroke();
-
-      glowCtx.beginPath();
-      glowCtx.strokeStyle = "rgba(167,139,250,0.20)";
-      glowCtx.lineWidth = 0.8;
-      glowCtx.arc(gx, gy, 68, 0, Math.PI * 2);
-      glowCtx.stroke();
-
-      glowCtx.beginPath();
-      glowCtx.fillStyle = "rgba(255,255,255,0.85)";
-      glowCtx.arc(gx, gy, 3.2, 0, Math.PI * 2);
-      glowCtx.fill();
-
-      glowCtx.beginPath();
-      glowCtx.strokeStyle = "rgba(255,255,255,0.16)";
-      glowCtx.lineWidth = 10;
-      glowCtx.ellipse(gx, gy, 42, 14, -0.38, 0, Math.PI * 2);
-      glowCtx.stroke();
-    }
-
-    function animate() {
-      mouse.x += (mouse.tx - mouse.x) * 0.08;
-      mouse.y += (mouse.ty - mouse.y) * 0.08;
-
+    function drawParticles() {
       particleCtx.clearRect(0, 0, w, h);
+
+      const gravityRadius = 220;
 
       for (const p of particles) {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const distSq = dx * dx + dy * dy;
         const dist = Math.sqrt(distSq) + 0.0001;
-
-        const gravityRadius = 240;
         const influence = Math.max(0, 1 - dist / gravityRadius);
 
         if (dist < gravityRadius) {
-          const pull = 0.018 * influence;
-          p.vx += (dx / dist) * pull;
-          p.vy += (dy / dist) * pull;
+          const radial = 0.014 * influence;
+          const tangential = 0.010 * influence;
 
-          const swirl = 0.010 * influence;
-          p.vx += (-dy / dist) * swirl;
-          p.vy += (dx / dist) * swirl;
+          p.vx += (dx / dist) * radial;
+          p.vy += (dy / dist) * radial;
+
+          p.vx += (-dy / dist) * tangential;
+          p.vy += (dx / dist) * tangential;
         }
 
-        p.vx *= 0.988;
-        p.vy *= 0.988;
+        p.vx *= 0.989;
+        p.vy *= 0.989;
 
         p.x += p.vx;
         p.y += p.vy;
 
-        if (dist < 18 || p.x < -40 || p.x > w + 40 || p.y < -40 || p.y > h + 40) {
-          resetParticle(p, false);
+        if (dist < 16 || p.x < -40 || p.x > w + 40 || p.y < -40 || p.y > h + 40) {
+          respawnParticle(p);
         }
 
         particleCtx.beginPath();
-        particleCtx.fillStyle = `hsla(${p.hue}, 80%, 78%, ${p.alpha})`;
+        particleCtx.fillStyle = `hsla(${p.hue}, 90%, 78%, ${p.alpha})`;
         particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         particleCtx.fill();
 
-        if (influence > 0.35) {
+        if (influence > 0.3) {
           particleCtx.beginPath();
-          particleCtx.strokeStyle = `hsla(${p.hue}, 90%, 75%, ${0.10 * influence})`;
+          particleCtx.strokeStyle = `hsla(${p.hue}, 90%, 75%, ${0.08 * influence})`;
           particleCtx.lineWidth = 1;
           particleCtx.moveTo(p.x, p.y);
-          particleCtx.lineTo(p.x - p.vx * 8, p.y - p.vy * 8);
+          particleCtx.lineTo(p.x - p.vx * 10, p.y - p.vy * 10);
           particleCtx.stroke();
         }
       }
+    }
 
-      drawGlow();
+    function drawLens() {
+      lensCtx.clearRect(0, 0, w, h);
+
+      const gx = mouse.x;
+      const gy = mouse.y;
+
+      const halo = lensCtx.createRadialGradient(gx, gy, 0, gx, gy, 250);
+      halo.addColorStop(0, "rgba(255,255,255,0.12)");
+      halo.addColorStop(0.05, "rgba(255,255,255,0.08)");
+      halo.addColorStop(0.10, "rgba(125,211,252,0.12)");
+      halo.addColorStop(0.22, "rgba(96,165,250,0.08)");
+      halo.addColorStop(0.36, "rgba(167,139,250,0.06)");
+      halo.addColorStop(0.52, "rgba(0,0,0,0.20)");
+      halo.addColorStop(1, "rgba(0,0,0,0)");
+
+      lensCtx.beginPath();
+      lensCtx.fillStyle = halo;
+      lensCtx.arc(gx, gy, 250, 0, Math.PI * 2);
+      lensCtx.fill();
+
+      lensCtx.beginPath();
+      lensCtx.fillStyle = "rgba(0,0,0,0.82)";
+      lensCtx.arc(gx, gy, 14, 0, Math.PI * 2);
+      lensCtx.fill();
+
+      lensCtx.beginPath();
+      lensCtx.strokeStyle = "rgba(255,255,255,0.07)";
+      lensCtx.lineWidth = 7;
+      lensCtx.ellipse(gx, gy, 42, 12, -0.35, 0, Math.PI * 2);
+      lensCtx.stroke();
+
+      lensCtx.beginPath();
+      lensCtx.strokeStyle = "rgba(125,211,252,0.25)";
+      lensCtx.lineWidth = 1.2;
+      lensCtx.arc(gx, gy, 34, 0, Math.PI * 2);
+      lensCtx.stroke();
+
+      lensCtx.beginPath();
+      lensCtx.strokeStyle = "rgba(167,139,250,0.18)";
+      lensCtx.lineWidth = 1;
+      lensCtx.arc(gx, gy, 68, 0, Math.PI * 2);
+      lensCtx.stroke();
+
+      lensCtx.beginPath();
+      lensCtx.strokeStyle = "rgba(96,165,250,0.12)";
+      lensCtx.lineWidth = 1;
+      lensCtx.arc(gx, gy, 110, 0, Math.PI * 2);
+      lensCtx.stroke();
+    }
+
+    function animate() {
+      mouse.x += (mouse.tx - mouse.x) * 0.08;
+      mouse.y += (mouse.ty - mouse.y) * 0.08;
+
+      drawGrid();
+      drawParticles();
+      drawLens();
+
       requestAnimationFrame(animate);
     }
 
+    resizeAll();
     animate();
   </script>
 </body>
