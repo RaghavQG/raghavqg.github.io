@@ -10,17 +10,15 @@
 
   <style>
     :root{
-      --bg0:#02050b;
-      --bg1:#06101d;
-      --bg2:#0a1324;
-      --text:#e7eefc;
-      --muted:#9cafc8;
-      --line:rgba(148,163,184,.14);
-      --panel:rgba(8,15,28,.58);
-      --panel-border:rgba(148,163,184,.13);
-      --accent:#7dd3fc;
-      --accent2:#a78bfa;
-      --accent3:#60a5fa;
+      --bg: #07101c;
+      --bg-soft: #0b1525;
+      --panel: rgba(255,255,255,0.72);
+      --panel-dark: rgba(8,15,30,0.58);
+      --border: rgba(148,163,184,0.16);
+      --text: #e5eefc;
+      --muted: #9fb0c8;
+      --accent: #7dd3fc;
+      --accent2: #a78bfa;
     }
 
     * { box-sizing: border-box; }
@@ -28,208 +26,202 @@
 
     body {
       font-family: "Inter", sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at 18% 12%, rgba(96,165,250,.10), transparent 26%),
-        radial-gradient(circle at 82% 18%, rgba(167,139,250,.10), transparent 24%),
-        radial-gradient(circle at 50% 120%, rgba(14,165,233,.08), transparent 35%),
-        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 45%, var(--bg0) 100%);
+        radial-gradient(circle at 20% 10%, rgba(96,165,250,0.06), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(167,139,250,0.05), transparent 20%),
+        linear-gradient(180deg, #040812 0%, #09101d 100%);
+      color: var(--text);
       overflow-x: hidden;
     }
 
-    #gridCanvas,
-    #particleCanvas,
-    #lensCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    #gridCanvas { z-index: -4; opacity: .95; }
-    #particleCanvas { z-index: -3; }
-    #lensCanvas { z-index: -2; }
-
-    .glass {
-      background: var(--panel);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--panel-border);
-      box-shadow:
-        0 10px 35px rgba(0,0,0,.24),
-        inset 0 1px 0 rgba(255,255,255,.02);
-    }
-
-    .card {
-      background: rgba(8, 15, 30, 0.58);
-      border: 1px solid rgba(148,163,184,.12);
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(125,211,252,.26);
-      box-shadow: 0 14px 34px rgba(0,0,0,.22);
-      background: rgba(10,18,34,.68);
-    }
+    .top-border { border-color: rgba(148,163,184,0.12); }
 
     .nav-pill {
-      border: 1px solid rgba(148,163,184,.18);
-      background: rgba(15,23,42,.36);
-      transition: all .24s ease;
+      border: 1px solid rgba(148,163,184,0.18);
+      background: rgba(15,23,42,0.35);
+      transition: all .22s ease;
     }
 
     .nav-pill:hover {
-      border-color: rgba(125,211,252,.48);
-      background: rgba(15,23,42,.68);
+      border-color: rgba(125,211,252,0.45);
+      background: rgba(15,23,42,0.65);
       transform: translateY(-1px);
-      box-shadow: 0 0 18px rgba(125,211,252,.10);
+      box-shadow: 0 0 18px rgba(125,211,252,0.08);
+    }
+
+    .card {
+      background: rgba(8,15,30,0.58);
+      border: 1px solid rgba(148,163,184,0.12);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(125,211,252,0.24);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.20);
+    }
+
+    .glass {
+      background: rgba(8,15,30,0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(148,163,184,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
     }
 
     .link {
-      color: #d6e7ff;
+      color: #d9e7ff;
       text-underline-offset: 4px;
-      transition: color .2s ease;
     }
 
-    .link:hover { color: white; }
+    .link:hover {
+      color: white;
+    }
 
-    .top-border { border-color: rgba(148,163,184,.11); }
+    .profile-pic {
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    }
 
-    .hero {
+    .hero-wrap {
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.12);
+      background:
+        linear-gradient(180deg, rgba(10,18,34,0.72), rgba(8,15,30,0.55));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .hero-panel::before {
       content: "";
       position: absolute;
-      right: -140px;
-      top: -90px;
-      width: 380px;
-      height: 380px;
+      right: -60px;
+      top: -60px;
+      width: 220px;
+      height: 220px;
       border-radius: 9999px;
       background:
-        radial-gradient(circle at 45% 45%,
-          rgba(255,255,255,.22) 0 2%,
-          rgba(125,211,252,.20) 6%,
-          rgba(96,165,250,.12) 14%,
-          rgba(167,139,250,.08) 24%,
-          rgba(0,0,0,0) 55%);
-      filter: blur(24px);
+        radial-gradient(circle at 50% 50%,
+          rgba(255,255,255,0.18) 0 2%,
+          rgba(125,211,252,0.16) 6%,
+          rgba(96,165,250,0.10) 14%,
+          rgba(167,139,250,0.06) 24%,
+          rgba(0,0,0,0) 58%);
+      filter: blur(20px);
       pointer-events: none;
-      opacity: .9;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 8px;
-      top: 36px;
-      width: 180px;
-      height: 180px;
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem .75rem;
       border-radius: 9999px;
-      border: 1px solid rgba(125,211,252,.14);
-      box-shadow:
-        0 0 45px rgba(125,211,252,.06),
-        inset 0 0 30px rgba(167,139,250,.05);
-      pointer-events: none;
+      font-size: .75rem;
+      border: 1px solid rgba(125,211,252,0.15);
+      background: rgba(125,211,252,0.08);
+      color: #def6ff;
     }
 
-    .profile-pic {
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.05),
-        0 14px 30px rgba(0,0,0,.28);
+    .hero-muted {
+      color: var(--muted);
     }
 
     .section-title {
-      letter-spacing: -.03em;
-    }
-
-    .muted { color: var(--muted); }
-
-    .hero-badge {
-      background: rgba(125,211,252,.08);
-      color: #dff5ff;
-      border: 1px solid rgba(125,211,252,.16);
+      letter-spacing: -0.03em;
     }
 
     @media (max-width: 640px) {
-      .hero::before {
-        width: 260px;
-        height: 260px;
-        right: -90px;
+      .hero-panel::before {
+        width: 150px;
+        height: 150px;
+        right: -40px;
         top: -30px;
-      }
-      .hero::after {
-        width: 120px;
-        height: 120px;
-        right: 10px;
-        top: 62px;
       }
     }
   </style>
 </head>
 
 <body class="antialiased">
-  <canvas id="gridCanvas"></canvas>
-  <canvas id="particleCanvas"></canvas>
-  <canvas id="lensCanvas"></canvas>
+  <header class="hero-wrap border-b top-border">
+    <canvas id="heroGrid" class="hero-grid"></canvas>
 
-  <header class="hero border-b top-border">
-    <div class="max-w-5xl mx-auto px-5 py-10 relative">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <div class="flex items-center gap-5">
-          <img
-            src="IMG20191026014115.jpg"
-            alt="Raghvendra Singh"
-            class="profile-pic w-24 h-24 rounded-full object-cover border border-white/10"
-          />
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs mb-3 hero-badge">
-              Quantum Gravity • Gravitation • Cosmology
+    <div class="max-w-5xl mx-auto px-5 py-10 hero-content">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+        <div class="hero-panel rounded-3xl p-6 md:p-7 flex-1">
+          <div class="flex items-center gap-5">
+            <img
+              src="IMG20191026014115.jpg"
+              alt="Raghvendra Singh"
+              class="profile-pic w-24 h-24 rounded-full object-cover border border-white/10"
+            />
+            <div>
+              <div class="hero-badge mb-3">
+                Quantum Gravity • Gravitation • Cosmology
+              </div>
+              <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
+                Raghvendra Singh
+              </h1>
+              <p class="mt-1 text-slate-200">
+                Postdoctoral Fellow, <span class="font-semibold text-sky-300">Ariel University</span> (Israel)
+              </p>
+              <p class="hero-muted text-sm mt-1">
+                Theoretical Physics • Euclidean Quantum Gravity • Quantum Gravity Phenomenology • Cosmology
+              </p>
             </div>
-            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white">Raghvendra Singh</h1>
-            <p class="mt-1 text-slate-200">
-              Postdoctoral Fellow, <span class="font-semibold text-sky-300">Ariel University</span> (Israel)
-            </p>
-            <p class="muted text-sm mt-1">
-              Theoretical Physics • Euclidean Quantum Gravity • Quantum Gravity Phenomenology • Cosmology
-            </p>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
+            <a class="link underline" href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank" rel="noreferrer">
+              Google Scholar
+            </a>
+            <a class="link underline" href="https://inspirehep.net/literature?size=25&page=1&q=raghvendra%20singh&sort=mostrecent" target="_blank" rel="noreferrer">
+              Inspire HEP
+            </a>
+            <a class="link underline" href="CV.pdf" target="_blank" rel="noreferrer">
+              CV (PDF)
+            </a>
+            <a class="link underline" href="#contact">
+              Email
+            </a>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-2 sm:justify-end">
+        <div class="flex flex-wrap gap-2 sm:justify-end sm:w-auto">
           <a href="#research" class="nav-pill px-3 py-1.5 text-sm rounded-md">Research</a>
           <a href="#papers" class="nav-pill px-3 py-1.5 text-sm rounded-md">Selected papers</a>
           <a href="#talks" class="nav-pill px-3 py-1.5 text-sm rounded-md">Talks</a>
           <a href="#contact" class="nav-pill px-3 py-1.5 text-sm rounded-md">Contact</a>
         </div>
       </div>
-
-      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
-        <a class="link underline" href="https://scholar.google.com/citations?user=PI9CDmoAAAAJ&hl=en" target="_blank" rel="noreferrer">
-          Google Scholar
-        </a>
-        <a class="link underline" href="https://inspirehep.net/literature?size=25&page=1&q=raghvendra%20singh&sort=mostrecent" target="_blank" rel="noreferrer">
-          Inspire HEP
-        </a>
-        <a class="link underline" href="CV.pdf" target="_blank" rel="noreferrer">
-          CV (PDF)
-        </a>
-        <a class="link underline" href="#contact">
-          Email
-        </a>
-      </div>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-5 relative z-10">
+  <main class="max-w-5xl mx-auto px-5">
     <section id="about" class="py-12">
       <div class="glass rounded-2xl p-6 md:p-8">
         <h2 class="section-title text-xl font-semibold tracking-tight text-white">About</h2>
-        <div class="mt-4 space-y-4 leading-relaxed text-slate-200">
+        <div class="mt-4 space-y-4 text-slate-200 leading-relaxed">
           <p>
             I am a postdoctoral fellow at Ariel University, working with Prof. Sergey Bondarenko.
             My work focuses on semiclassical and Euclidean approaches to gravity, with the goal of making
@@ -248,7 +240,7 @@
       <h2 class="section-title text-xl font-semibold tracking-tight text-white">Research</h2>
 
       <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <h3 class="font-semibold text-white">Current emphasis</h3>
           <ul class="mt-3 space-y-2 text-sm text-slate-200 list-disc list-inside">
             <li>Covariant Euclidean continuation in curved spacetimes</li>
@@ -257,7 +249,7 @@
           </ul>
         </div>
 
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <h3 class="font-semibold text-white">Tools</h3>
           <ul class="mt-3 space-y-2 text-sm text-slate-200 list-disc list-inside">
             <li>Hypersurface geometry and observer-covariant constructions</li>
@@ -266,7 +258,7 @@
           </ul>
         </div>
 
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <h3 class="font-semibold text-white">Physical outputs</h3>
           <ul class="mt-3 space-y-2 text-sm text-slate-200 list-disc list-inside">
             <li>Euclidean action and saddle selection</li>
@@ -280,7 +272,7 @@
         <h3 class="text-lg font-semibold tracking-tight text-white">Research areas</h3>
 
         <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="card rounded-xl p-5">
+          <div class="card p-5 rounded-xl">
             <h4 class="font-semibold text-white">Euclidean Quantum Gravity</h4>
             <p class="mt-2 text-sm text-slate-300">
               Euclidean methods in semiclassical gravity with emphasis on covariant Euclideanization,
@@ -293,7 +285,7 @@
             </ul>
           </div>
 
-          <div class="card rounded-xl p-5">
+          <div class="card p-5 rounded-xl">
             <h4 class="font-semibold text-white">Quantum Gravity Phenomenology</h4>
             <p class="mt-2 text-sm text-slate-300">
               Operational and effective probes of quantum-gravitational effects, tied to curvature data
@@ -306,7 +298,7 @@
             </ul>
           </div>
 
-          <div class="card rounded-xl p-5">
+          <div class="card p-5 rounded-xl">
             <h4 class="font-semibold text-white">Theoretical Cosmology</h4>
             <p class="mt-2 text-sm text-slate-300">
               Semiclassical and Euclidean approaches to early-universe questions, including initial conditions
@@ -321,7 +313,7 @@
         </div>
       </div>
 
-      <div class="mt-10 card rounded-xl p-5">
+      <div class="mt-10 card p-5 rounded-xl">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
           <div>
             <h3 class="text-lg font-semibold tracking-tight text-white">Research program overview</h3>
@@ -348,7 +340,7 @@
       <h2 class="section-title text-xl font-semibold tracking-tight text-white">Selected papers</h2>
 
       <div class="mt-5 space-y-4">
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
             <p class="font-semibold text-white">Covariant Wick Rotation</p>
             <div class="flex gap-4 text-sm">
@@ -360,7 +352,7 @@
           </p>
         </div>
 
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
             <p class="font-semibold text-white">Covariant GUP</p>
             <div class="flex gap-4 text-sm">
@@ -372,7 +364,7 @@
           </p>
         </div>
 
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
             <p class="font-semibold text-white">Gravity-induced Decoherence</p>
             <div class="flex gap-4 text-sm">
@@ -395,7 +387,7 @@
       <h2 class="section-title text-xl font-semibold tracking-tight text-white">Academic background</h2>
 
       <div class="mt-5 space-y-4">
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2">
             <p class="font-semibold text-white">PhD in Theoretical Physics — IMSc, Chennai</p>
             <p class="text-sm text-slate-400">Supervisor: Sujay K. Ashok; Co-supervisor: Dawood Kothawala (IIT Madras)</p>
@@ -405,7 +397,7 @@
           </p>
         </div>
 
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2">
             <p class="font-semibold text-white">MSc in Physics — IMSc, Chennai</p>
             <p class="text-sm text-slate-400">Thesis advisor: Alok Laddha (CMI)</p>
@@ -421,7 +413,7 @@
       <h2 class="section-title text-xl font-semibold tracking-tight text-white">Talks & conferences</h2>
 
       <div class="mt-5 space-y-4">
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
             <div>
               <p class="font-semibold text-white">PIRT 2025</p>
@@ -440,7 +432,7 @@
           </div>
         </div>
 
-        <div class="card rounded-xl p-5">
+        <div class="card p-5 rounded-xl">
           <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
             <div>
               <p class="font-semibold text-white">Spontaneous Workshop XVII</p>
@@ -477,107 +469,69 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const gridCanvas = document.getElementById("gridCanvas");
-    const gridCtx = gridCanvas.getContext("2d");
+    const canvas = document.getElementById("heroGrid");
+    const ctx = canvas.getContext("2d");
 
-    const particleCanvas = document.getElementById("particleCanvas");
-    const particleCtx = particleCanvas.getContext("2d");
+    let w, h, dpr;
+    let mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+    let heroBounds = null;
 
-    const lensCanvas = document.getElementById("lensCanvas");
-    const lensCtx = lensCanvas.getContext("2d");
+    function resizeCanvas() {
+      const hero = document.querySelector(".hero-wrap");
+      heroBounds = hero.getBoundingClientRect();
 
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = heroBounds.width;
+      h = heroBounds.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    function setupCanvas(canvas, ctx) {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       canvas.style.width = w + "px";
       canvas.style.height = h + "px";
+
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      mouse.x = w * 0.38;
+      mouse.y = h * 0.48;
+      mouse.tx = mouse.x;
+      mouse.ty = mouse.y;
     }
 
-    function resizeAll() {
-      w = window.innerWidth;
-      h = window.innerHeight;
-      setupCanvas(gridCanvas, gridCtx);
-      setupCanvas(particleCanvas, particleCtx);
-      setupCanvas(lensCanvas, lensCtx);
-      initParticles();
+    function updateMouseFromEvent(e) {
+      const hero = document.querySelector(".hero-wrap");
+      const rect = hero.getBoundingClientRect();
+      mouse.tx = e.clientX - rect.left;
+      mouse.ty = e.clientY - rect.top;
     }
-
-    const mouse = {
-      x: window.innerWidth * 0.7,
-      y: window.innerHeight * 0.24,
-      tx: window.innerWidth * 0.7,
-      ty: window.innerHeight * 0.24
-    };
 
     window.addEventListener("mousemove", (e) => {
-      mouse.tx = e.clientX;
-      mouse.ty = e.clientY;
-    });
+      const hero = document.querySelector(".hero-wrap");
+      const rect = hero.getBoundingClientRect();
+      const inside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
 
-    window.addEventListener("mouseleave", () => {
-      mouse.tx = window.innerWidth * 0.7;
-      mouse.ty = window.innerHeight * 0.24;
-    });
-
-    window.addEventListener("resize", resizeAll);
-
-    let particles = [];
-    function initParticles() {
-      const count = Math.min(150, Math.floor((w * h) / 12000));
-      particles = [];
-      for (let i = 0; i < count; i++) {
-        particles.push(makeParticle(true));
-      }
-    }
-
-    function rand(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    function makeParticle(initial = false) {
-      let x, y;
-      if (initial) {
-        x = Math.random() * w;
-        y = Math.random() * h;
+      if (inside) {
+        updateMouseFromEvent(e);
       } else {
-        const edge = Math.floor(Math.random() * 4);
-        if (edge === 0) { x = Math.random() * w; y = -20; }
-        if (edge === 1) { x = w + 20; y = Math.random() * h; }
-        if (edge === 2) { x = Math.random() * w; y = h + 20; }
-        if (edge === 3) { x = -20; y = Math.random() * h; }
+        mouse.tx = w * 0.38;
+        mouse.ty = h * 0.48;
       }
-      return {
-        x,
-        y,
-        vx: rand(-0.12, 0.12),
-        vy: rand(-0.12, 0.12),
-        size: rand(0.8, 2.0),
-        alpha: rand(0.25, 0.8),
-        hue: rand(190, 255)
-      };
-    }
+    });
 
-    function respawnParticle(p) {
-      const np = makeParticle(false);
-      Object.assign(p, np);
-    }
+    window.addEventListener("resize", resizeCanvas);
 
     function drawGrid() {
-      gridCtx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, w, h);
 
       const spacing = 34;
-      const radius = 190;
-      const strength = 28;
-
-      gridCtx.lineWidth = 1;
+      const radius = 140;
+      const strength = 18;
 
       for (let y = -spacing; y <= h + spacing; y += spacing) {
-        gridCtx.beginPath();
+        ctx.beginPath();
         for (let x = -spacing; x <= w + spacing; x += 8) {
           const dx = x - mouse.x;
           const dy = y - mouse.y;
@@ -585,20 +539,21 @@
           const influence = Math.max(0, 1 - dist / radius);
 
           const offsetY = influence > 0 ? (dy / dist) * strength * influence * influence : 0;
-          const offsetX = influence > 0 ? (dx / dist) * strength * 0.22 * influence * influence : 0;
+          const offsetX = influence > 0 ? (dx / dist) * strength * 0.15 * influence * influence : 0;
 
           const px = x + offsetX;
           const py = y + offsetY;
 
-          if (x === -spacing) gridCtx.moveTo(px, py);
-          else gridCtx.lineTo(px, py);
+          if (x === -spacing) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
         }
-        gridCtx.strokeStyle = "rgba(125,211,252,0.09)";
-        gridCtx.stroke();
+        ctx.strokeStyle = "rgba(125,211,252,0.10)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
       }
 
       for (let x = -spacing; x <= w + spacing; x += spacing) {
-        gridCtx.beginPath();
+        ctx.beginPath();
         for (let y = -spacing; y <= h + spacing; y += 8) {
           const dx = x - mouse.x;
           const dy = y - mouse.y;
@@ -606,130 +561,49 @@
           const influence = Math.max(0, 1 - dist / radius);
 
           const offsetX = influence > 0 ? (dx / dist) * strength * influence * influence : 0;
-          const offsetY = influence > 0 ? (dy / dist) * strength * 0.22 * influence * influence : 0;
+          const offsetY = influence > 0 ? (dy / dist) * strength * 0.15 * influence * influence : 0;
 
           const px = x + offsetX;
           const py = y + offsetY;
 
-          if (y === -spacing) gridCtx.moveTo(px, py);
-          else gridCtx.lineTo(px, py);
+          if (y === -spacing) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
         }
-        gridCtx.strokeStyle = "rgba(167,139,250,0.06)";
-        gridCtx.stroke();
+        ctx.strokeStyle = "rgba(167,139,250,0.06)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
       }
-    }
 
-    function drawParticles() {
-      particleCtx.clearRect(0, 0, w, h);
+      const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 120);
+      glow.addColorStop(0, "rgba(255,255,255,0.08)");
+      glow.addColorStop(0.12, "rgba(125,211,252,0.08)");
+      glow.addColorStop(0.35, "rgba(96,165,250,0.04)");
+      glow.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.beginPath();
+      ctx.fillStyle = glow;
+      ctx.arc(mouse.x, mouse.y, 120, 0, Math.PI * 2);
+      ctx.fill();
 
-      const gravityRadius = 220;
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.lineWidth = 6;
+      ctx.ellipse(mouse.x, mouse.y, 38, 12, -0.35, 0, Math.PI * 2);
+      ctx.stroke();
 
-      for (const p of particles) {
-        const dx = mouse.x - p.x;
-        const dy = mouse.y - p.y;
-        const distSq = dx * dx + dy * dy;
-        const dist = Math.sqrt(distSq) + 0.0001;
-        const influence = Math.max(0, 1 - dist / gravityRadius);
-
-        if (dist < gravityRadius) {
-          const radial = 0.014 * influence;
-          const tangential = 0.010 * influence;
-
-          p.vx += (dx / dist) * radial;
-          p.vy += (dy / dist) * radial;
-
-          p.vx += (-dy / dist) * tangential;
-          p.vy += (dx / dist) * tangential;
-        }
-
-        p.vx *= 0.989;
-        p.vy *= 0.989;
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (dist < 16 || p.x < -40 || p.x > w + 40 || p.y < -40 || p.y > h + 40) {
-          respawnParticle(p);
-        }
-
-        particleCtx.beginPath();
-        particleCtx.fillStyle = `hsla(${p.hue}, 90%, 78%, ${p.alpha})`;
-        particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        particleCtx.fill();
-
-        if (influence > 0.3) {
-          particleCtx.beginPath();
-          particleCtx.strokeStyle = `hsla(${p.hue}, 90%, 75%, ${0.08 * influence})`;
-          particleCtx.lineWidth = 1;
-          particleCtx.moveTo(p.x, p.y);
-          particleCtx.lineTo(p.x - p.vx * 10, p.y - p.vy * 10);
-          particleCtx.stroke();
-        }
-      }
-    }
-
-    function drawLens() {
-      lensCtx.clearRect(0, 0, w, h);
-
-      const gx = mouse.x;
-      const gy = mouse.y;
-
-      const halo = lensCtx.createRadialGradient(gx, gy, 0, gx, gy, 250);
-      halo.addColorStop(0, "rgba(255,255,255,0.12)");
-      halo.addColorStop(0.05, "rgba(255,255,255,0.08)");
-      halo.addColorStop(0.10, "rgba(125,211,252,0.12)");
-      halo.addColorStop(0.22, "rgba(96,165,250,0.08)");
-      halo.addColorStop(0.36, "rgba(167,139,250,0.06)");
-      halo.addColorStop(0.52, "rgba(0,0,0,0.20)");
-      halo.addColorStop(1, "rgba(0,0,0,0)");
-
-      lensCtx.beginPath();
-      lensCtx.fillStyle = halo;
-      lensCtx.arc(gx, gy, 250, 0, Math.PI * 2);
-      lensCtx.fill();
-
-      lensCtx.beginPath();
-      lensCtx.fillStyle = "rgba(0,0,0,0.82)";
-      lensCtx.arc(gx, gy, 14, 0, Math.PI * 2);
-      lensCtx.fill();
-
-      lensCtx.beginPath();
-      lensCtx.strokeStyle = "rgba(255,255,255,0.07)";
-      lensCtx.lineWidth = 7;
-      lensCtx.ellipse(gx, gy, 42, 12, -0.35, 0, Math.PI * 2);
-      lensCtx.stroke();
-
-      lensCtx.beginPath();
-      lensCtx.strokeStyle = "rgba(125,211,252,0.25)";
-      lensCtx.lineWidth = 1.2;
-      lensCtx.arc(gx, gy, 34, 0, Math.PI * 2);
-      lensCtx.stroke();
-
-      lensCtx.beginPath();
-      lensCtx.strokeStyle = "rgba(167,139,250,0.18)";
-      lensCtx.lineWidth = 1;
-      lensCtx.arc(gx, gy, 68, 0, Math.PI * 2);
-      lensCtx.stroke();
-
-      lensCtx.beginPath();
-      lensCtx.strokeStyle = "rgba(96,165,250,0.12)";
-      lensCtx.lineWidth = 1;
-      lensCtx.arc(gx, gy, 110, 0, Math.PI * 2);
-      lensCtx.stroke();
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(0,0,0,0.60)";
+      ctx.arc(mouse.x, mouse.y, 10, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     function animate() {
       mouse.x += (mouse.tx - mouse.x) * 0.08;
       mouse.y += (mouse.ty - mouse.y) * 0.08;
-
       drawGrid();
-      drawParticles();
-      drawLens();
-
       requestAnimationFrame(animate);
     }
 
-    resizeAll();
+    resizeCanvas();
     animate();
   </script>
 </body>
